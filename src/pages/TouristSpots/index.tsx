@@ -1,3 +1,4 @@
+import Breadcrumb from "../../components/Breadcrumb";
 import Container from "../../components/Container"
 import Footer from "../../components/Footer"
 import Header from "../../components/Header"
@@ -10,6 +11,7 @@ export const TouristSpots:React.FC = () => {
         <>
             <Header />
             <Container>
+                <Breadcrumb />
                 <Menu />
                 <TouristSpotCard />
             </Container>

@@ -12,7 +12,7 @@ const Header:React.FC = () => (
         <div className="container">
             <div className="d-flex justify-content-between align-items-center pt-3 pb-3">
                 <div className="d-flex align-items-center">
-                    <button className="text-white text-decoration-none fs-3 btn btn-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" type="button" aria-controls="sidebar"><MdMenu /> Menu</button>
+                    <button className="text-white text-decoration-none btn btn-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" type="button" aria-controls="sidebar"><MdMenu className="fs-2" /> Menu</button>
                 </div>
                 <Link to="/">
                     <img src="https://conhecamarica.com.br/static/media/app-logo.20b8b528.png" alt="Logo Conheça Maricá" className="img-fluid"></img>

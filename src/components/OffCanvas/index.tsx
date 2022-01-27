@@ -13,9 +13,9 @@ const OffCanvas:React.FC = () => (
             <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div className="offcanvas-body d-flex flex-column">
-            <Link to="" className="fs-5 pb-3 border-bottom text-decoration-none"><FaHome /> Inicial</Link>
+            <Link to="/" className="fs-5 pb-3 border-bottom text-decoration-none"><FaHome /> Inicial</Link>
             <Link to="" className="fs-5 py-3 border-bottom text-decoration-none"><FiInfo /> Sobre a Cidade</Link>
-            <Link to="" className="fs-5 py-3 border-bottom text-decoration-none"><FaUmbrellaBeach /> Pontos Turísticos</Link>
+            <Link to="/pontos" className="fs-5 py-3 border-bottom text-decoration-none"><FaUmbrellaBeach /> Pontos Turísticos</Link>
             <Link to="" className="fs-5 py-3 border-bottom text-decoration-none"><FaBed /> Hoteís e Pousadas</Link>
             <Link to="" className="fs-5 py-3 border-bottom text-decoration-none"><MdRestaurant /> Bares e Restaurantes</Link>
             <Link to="" className="fs-5 py-3 border-bottom text-decoration-none"><FaMotorcycle /> Delivery</Link>

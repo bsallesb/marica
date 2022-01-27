@@ -13,7 +13,7 @@ const Menu:React.FC = () => {
     return(
         <Section className="d-flex flex-wrap p-3 px-0">
             {categories.map((categorie) =>
-                <li><Button type="button" className="btn me-2 mb-2">{categorie.categorias}</Button></li>
+                <li><Button type="button" className="btn me-2 mb-2">{categorie.label}</Button></li>
             )}
         </Section>
     )

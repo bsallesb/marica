@@ -7,4 +7,6 @@ export type SpotType = {
     capa: string;
     categorias: Categories;
     enderecos: Adress
+    label: string;
+    count: number;
 };
