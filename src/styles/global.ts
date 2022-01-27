@@ -34,4 +34,14 @@ export const GlobalStyle = createGlobalStyle`
     p, ul {
         margin: 0;
     }
+
+    // bootstrap overrides
+
+    .btn:focus {
+        box-shadow: none;
+    }
+    .offcanvas {
+        background-color: #000;
+        opacity: 80%;
+    }
 `

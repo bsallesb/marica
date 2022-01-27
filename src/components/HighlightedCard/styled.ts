@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Section = styled.div`
+export const CardSection = styled.div`
 
     a {
         color: #000;
@@ -10,7 +10,7 @@ export const Section = styled.div`
     p {
         font-size: 13px
     }
-`;
+`
 
 export const Button = styled.a`
     color: rgb(110, 189, 0) !important;

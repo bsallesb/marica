@@ -12,4 +12,4 @@ export const MainHeader = styled.div`
         color: #fff;
         text-decoration: none
     }
-`
+`;

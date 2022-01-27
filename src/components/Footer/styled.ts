@@ -15,4 +15,4 @@ export const MainFooter = styled.div`
     img {
         max-width: 130px
     }
-`
+`;
