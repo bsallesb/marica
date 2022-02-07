@@ -5,7 +5,7 @@ import {
     useContext,
     useMemo,
 } from 'react';
-import { BannerType } from '../@types/BannerType';
+import { BannerType } from '../@types/Banner';
 import Api from '../services/Api';
 
 // Aqui é definida a Interface com os tipos de dados de tudo que será disponibilizado "para fora" do Provider
@@ -43,9 +43,9 @@ export const BannersProvider: React.FC = ({ children }) => {
                 setBanners(response.data);
             })
             .catch(() => {
-                setBanners([])
+                setBanners([]);
             })
-            .finally()
+            .finally();
     }, []);
 
     // Aqui são definidas quais informações estarão disponíveis "para fora" do Provider

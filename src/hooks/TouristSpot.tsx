@@ -5,14 +5,18 @@ import {
     useContext,
     useMemo,
 } from 'react';
-import { SpotType } from '../@types/SpotType';
+import { CategorieType } from '../@types/Categorie';
+import { SpotType } from '../@types/Spot';
 import Api from '../services/Api';
 
 // Aqui é definida a Interface com os tipos de dados de tudo que será disponibilizado "para fora" do Provider
 interface SpotContextData {
+    spot: SpotType | null;
     spots: SpotType[];
-    categories: SpotType[];
-    getSpots: () => Promise<void>;
+    categories: CategorieType[];
+    isLoading: boolean;
+    getSpots: (text?: string) => Promise<void>;
+    getSpot: (id: number) => Promise<void>;
 }
 
 // Aqui é definido o Context (não precisa entender, é sempre exatamente assim)
@@ -37,30 +41,52 @@ export const useSpots = (): SpotContextData => {
 // Aqui são definidas as variáveis de State e as funções do Provider
 export const SpotsProvider: React.FC = ({ children }) => {
     const [spots, setSpots] = useState<SpotType[]>([]);
-    const [categories, setCategories] = useState<SpotType[]>([]);
+    const [spot, setSpot] = useState<SpotType | null>(null);
+    const [categories, setCategories] = useState<CategorieType[]>([]);
+    const [isLoading, setLoading] = useState(true);
 
-    const getSpots = useCallback(async (): Promise<void> => {
-        Api.get('/pontos')
+    const getSpots = useCallback(async (searchText = ''): Promise<void> => {
+        let url = '/pontos';
+
+        if (searchText.length > 0) {
+            url += `/busca?busca=${searchText}`;
+        }
+
+        Api.get(url)
             .then(response => {
                 setSpots(response.data.collection);
-                setCategories(response.data.categorias);
+                if (response.data.categorias) {
+                    setCategories(response.data.categorias);
+                }
             })
             .catch(() => {
-                setSpots([])
-                setCategories([])
+                setSpots([]);
+                setCategories([]);
             })
-            .finally()
+            .finally();
     }, []);
 
-    console.log('spots', spots);
+    const getSpot = useCallback(async (id: number): Promise<void> => {
+        setLoading(true);
+
+        Api.get(`/pontos/${id}`)
+            .then(response => {
+                setSpot(response.data.item ?? null);
+            })
+            .catch()
+            .finally(() => setLoading(false));
+    }, []);
     // Aqui são definidas quais informações estarão disponíveis "para fora" do Provider
     const providerValue = useMemo(
         () => ({
+            spot,
             spots,
             categories,
+            isLoading,
             getSpots,
+            getSpot,
         }),
-        [spots, categories, getSpots]
+        [spots, categories, isLoading, spot, getSpots, getSpot]
     );
 
     return (

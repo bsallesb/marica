@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: Roboto, sans-serif;
     }
 
-    html {
+    html {  
         @media (max-width: 1080px) {
             font-size: 93.75%;
         }

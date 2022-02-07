@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const BreadcrumbSection = styled.div`
+export const TitleSection = styled.div`
     a, li{
         font-size: 28px;
         font-weight: bold;
@@ -9,7 +9,7 @@ export const BreadcrumbSection = styled.div`
     }
 `;
 
-export const BreadcrumbArrow = styled.a`
+export const TitleArrow = styled.a`
 
         font-size: 18px !important;
         font-weight: lighter;

@@ -1,24 +1,44 @@
-import { Link } from "react-router-dom";
-import { BorderCard, Button, Section } from "./styled";
+import { Link } from 'react-router-dom';
+import { AddressType } from '../../@types/Address';
+import { CategorieType } from '../../@types/Categorie';
+import { BorderCard, Cover, Pill, Section } from './styled';
 
 interface ICardProps {
     url: string;
     nome: string;
-    description: string;
-    image: string
-};
+    addresses: AddressType[];
+    image: string;
+    categories: CategorieType[];
+}
 
-const Card:React.FC<ICardProps> = ({url, nome, description, image}) => (    
+const Card: React.FC<ICardProps> = ({
+    url,
+    nome,
+    addresses,
+    image,
+    categories,
+}) => (
     <Section className="d-flex col">
         <BorderCard className="card align-self-stretch w-100 text-start border-0 shadow-sm">
-            <Link to={url} className="fs-1 text-center"><img src={image} alt="" /></Link>
+            <Link to={url} className="fs-1 text-center">
+                <Cover style={{ backgroundImage: `url(${image})` }} />
+            </Link>
             <div className="card-body">
-                <h5 className="card-title fs-5 mb-2">{nome}</h5>
+                <Link to={url} className="text-decoration-none">
+                    <h5 className="card-title fs-5 mb-2">{nome}</h5>
+                </Link>
                 <div className="d-flex flex-wrap">
-                    <Button type="button" className="btn">Acessar</Button>
-                    <Button type="button" className="btn">Acessar</Button>
+                    {categories.map(category => (
+                        <Pill className="btn" key={category.id}>
+                            {category.label}
+                        </Pill>
+                    ))}
                 </div>
-                <p className="card-text pb-4">{description}</p>
+                {addresses.map(address => (
+                    <p className="card-text pb-4" key={address.id}>
+                        {address.label}
+                    </p>
+                ))}
             </div>
         </BorderCard>
     </Section>

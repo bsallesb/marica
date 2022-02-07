@@ -1,14 +1,13 @@
-import Container from "../../components/Container";
-import Banner from "../../components/Banner";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import HighlightedContent from "../../components/HighlightedContent";
-import Carousel from "../../components/Carousel";
+import Container from '../../components/Container';
+import Banner from '../../components/Banner';
+import Footer from '../../components/Footer';
+import Header from '../../components/Header';
+import HighlightedContent from '../../components/HighlightedContent';
+import Carousel from '../../components/Carousel';
 
-export const Home:React.FC = () => {
-
-    return(
-          <>
+export const Home: React.FC = () => {
+    return (
+        <>
             <Header />
             <Carousel />
             <Container>
@@ -16,6 +15,6 @@ export const Home:React.FC = () => {
             </Container>
             <Banner />
             <Footer />
-          </>
-      );
-  }
+        </>
+    );
+};
