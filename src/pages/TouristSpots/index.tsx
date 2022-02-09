@@ -3,15 +3,16 @@ import { useCallback, useEffect } from 'react';
 import Container from '../../components/Container';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import Menu from '../../components/Menu';
 import SearchBar from '../../components/SearchBar';
 import Map from '../../components/Map';
 import { useSpots } from '../../hooks/TouristSpot';
 import Card from '../../components/Card';
 import PageTitle from '../../components/PageTitle';
+import Pills from '../../components/Pills';
+import Wrapper from '../../components/Wrapper';
 
 export const TouristSpots: React.FC = () => {
-    const { spots, getSpots } = useSpots();
+    const { spots, categories, getSpots } = useSpots();
 
     useEffect(() => {
         getSpots();
@@ -24,27 +25,28 @@ export const TouristSpots: React.FC = () => {
     }, []);
 
     return (
-        <>
+        <Wrapper>
             <Header />
             <Container>
-                <div className="row align-items-center mt-3">
-                    <div className="col col-6">
-                        <PageTitle name="Pontos Turísticos" />
+                <div className="row align-items-center mt-3 mb-3">
+                    <div className="col col-5 col-lg-6">
+                        <PageTitle title="Pontos Turísticos" />
                     </div>
-                    <div className="col col-6 row m-0">
-                        <div className="col-3 p-0 text-center">
-                            <Map />
-                        </div>
-                        <div className="col-9">
-                            <SearchBar
-                                placeholder="Buscar Pontos Turísticos"
-                                onSearch={handleSearch}
-                            />
-                        </div>
+                    <div className="d-flex col col-7 col-lg-6 m-0">
+                        <Map />
+                        <SearchBar
+                            placeholder="Buscar Pontos Turísticos"
+                            onSearch={handleSearch}
+                        />
                     </div>
                 </div>
-                <Menu />
-                <div className="align-self-stretch pb-5">
+                <Pills
+                    categories={categories}
+                    url="/"
+                    color="secondary"
+                    size="md"
+                />
+                <div className="align-self-stretch pb-5 mt-3">
                     <div className="row row-cols-3 gy-4">
                         {spots.map(spot => (
                             <Card
@@ -60,6 +62,6 @@ export const TouristSpots: React.FC = () => {
                 </div>
             </Container>
             <Footer />
-        </>
+        </Wrapper>
     );
 };

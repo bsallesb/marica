@@ -17,7 +17,7 @@ const HighlightedCard: React.FC<ICardProps> = ({
     url,
 }) => (
     <CardSection className="d-flex col">
-        <div className="card align-self-stretch w-100 border-0">
+        <div className="card align-self-stretch w-100 text-center border-0">
             <Link to={url} className="fs-1">
                 <Icon />
             </Link>

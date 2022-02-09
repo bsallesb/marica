@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const MainFooter = styled.div`
     background-color: rgb(51, 51, 51);
@@ -9,10 +9,10 @@ export const MainFooter = styled.div`
 
     a {
         text-decoration: none;
-        color: #fff
+        color: #fff;
     }
 
     img {
-        max-width: 130px
+        max-width: 130px;
     }
 `;

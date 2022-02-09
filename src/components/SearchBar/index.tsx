@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { Button, Form, SearchInput } from './styled';
+import { Form } from './styled';
 
 interface ISearchBarProps {
     placeholder?: string;
@@ -14,8 +14,8 @@ const SearchBar: React.FC<ISearchBarProps> = ({
     const [searchText, setSearchText] = useState('');
 
     return (
-        <Form className="d-flex row">
-            <div className="d-flex col col-12">
+        <Form className="flex-grow-1">
+            <div className="d-flex px-3">
                 <input
                     className="form-control me-2 border-0"
                     type="search"

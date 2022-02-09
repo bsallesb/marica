@@ -1,16 +1,15 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const CardSection = styled.div`
-
     a {
         color: #000;
-        text-decoration: none
+        text-decoration: none;
     }
 
     p {
-        font-size: 13px
+        font-size: 13px;
     }
-`
+`;
 
 export const Button = styled.a`
     color: rgb(110, 189, 0) !important;
@@ -18,5 +17,5 @@ export const Button = styled.a`
     background-color: transparent;
     font-size: 16px;
     border-radius: 20px;
-    padding: 0px 20px 0px 20px
+    padding: 0px 20px 0px 20px;
 `;

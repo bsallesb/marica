@@ -7,8 +7,7 @@ const LoadingGate: React.FC<LoadingGateProps> = ({
     waitFor,
     meanWile,
     children,
-}) => {
-    return <> waitFor ? children : meanWile; </>;
-};
+    // eslint-disable-next-line react/jsx-no-useless-fragment
+}) => <>{waitFor ? children : meanWile}</>;
 
 export default LoadingGate;

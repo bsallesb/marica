@@ -13,6 +13,6 @@ export const Form = styled.form`
     border-radius: 20px;
     border-color: #000;
     border: solid;
-    border-width: 1.7px;
+    border-width: 1px;
     background-color: #fff;
 `;

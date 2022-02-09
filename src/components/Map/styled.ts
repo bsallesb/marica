@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ButtonMap = styled.button`
     padding: 5px 20px 5px 20px;

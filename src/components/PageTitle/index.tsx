@@ -3,23 +3,36 @@ import { Link } from 'react-router-dom';
 import { TitleArrow, TitleSection } from './styled';
 
 interface IPageTitleProps {
-    name: string;
+    title: string;
+    subtitle?: string;
+    url?: string;
 }
 
-const PageTitle: React.FC<IPageTitleProps> = ({ name }) => {
+const PageTitle: React.FC<IPageTitleProps> = ({
+    title,
+    subtitle,
+    url = '/',
+}) => {
     return (
         <TitleSection
             aria-label="breadcrumb"
             className="d-flex align-items-center"
         >
-            <ol className="breadcrumb m-0 d-flex align-items-center">
-                <TitleArrow href="">
+            <ul className="breadcrumb m-0 d-flex align-items-center">
+                <TitleArrow className="fw-normal fs-5 me-2" to={url}>
                     <AiOutlineArrowLeft />
                 </TitleArrow>
-                <li className="breadcrumb-item">
-                    <Link to="/">{name}</Link>
+                <li className="d-flex flex-column">
+                    {subtitle && (
+                        <Link to="/" className=" text-muted fs-6 fw-normal">
+                            {subtitle}
+                        </Link>
+                    )}
+                    <Link to="/" className="breadcrumb-item">
+                        {title}
+                    </Link>
                 </li>
-            </ol>
+            </ul>
         </TitleSection>
     );
 };
