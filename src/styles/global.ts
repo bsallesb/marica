@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
+
     :root {
         --secondary: rgb(110, 189, 0);
         --primary: rgb(45, 103, 127);

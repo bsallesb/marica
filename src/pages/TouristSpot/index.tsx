@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import AboutSpot from '../../components/AboutSpot';
 
 import Container from '../../components/Container';
 import EntryValue from '../../components/EntryValue';
@@ -9,6 +10,7 @@ import Informations from '../../components/InformationsSpot';
 import LoadingGate from '../../components/LoadingGate';
 import PageTitle from '../../components/PageTitle';
 import Pills from '../../components/Pills';
+import SpotSlider from '../../components/Slider';
 import Travellers from '../../components/Travellers';
 import Wrapper from '../../components/Wrapper';
 import { useSpots } from '../../hooks/TouristSpot';
@@ -25,6 +27,12 @@ const TouristSpot: React.FC = () => {
     return (
         <Wrapper>
             <Header />
+            {spot && (
+                <SpotSlider images={spot.images}>
+                    import `~slick-carousel/slick/slick.css``; import
+                    `~slick-carousel/slick/slick-theme.css``;
+                </SpotSlider>
+            )}
             <Container>
                 <LoadingGate waitFor={isLoading === false} meanWile="Loading">
                     <div className="row">
@@ -46,11 +54,18 @@ const TouristSpot: React.FC = () => {
                                                 color="secondary"
                                             />
                                         )}
-                                    <div className="mb-4">
+                                    <div className="mb-4 mt-2">
                                         <p className="text-justify">
                                             {spot?.descricao_t}
                                         </p>
                                     </div>
+                                    <AboutSpot
+                                        title="Sobre"
+                                        addresses={spot.addresses}
+                                        phones={spot.phones}
+                                        socialmidias={spot.redes}
+                                        email={spot.email}
+                                    />
                                     <EntryValue
                                         title="Valor da Entrada"
                                         isFree={spot.gratuito}
