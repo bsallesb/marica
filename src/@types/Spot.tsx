@@ -3,8 +3,9 @@ import { AddressType } from './Address';
 import { CategorieType } from './Categorie';
 import { ImageType } from './Image';
 import { InfoType } from './Information';
-import { PhonesType } from './Phone';
-import { SocialmediaType } from './Socialmedia';
+import { OpeningHoursType } from './OpeningHours';
+import { PhoneType } from './Phone';
+import { SocialMediaType } from './SocialMedia';
 import { TravellerType } from './Travaller';
 
 export type SpotType = {
@@ -20,8 +21,9 @@ export type SpotType = {
     gratuito: boolean;
     preco_t: string;
     images: ImageType[];
-    phones: PhonesType[];
+    phones: PhoneType[];
     email: string;
     addresses: AddressType[];
-    redes: SocialmediaType[];
+    redes: SocialMediaType[];
+    horario_funcionamento: OpeningHoursType[];
 };

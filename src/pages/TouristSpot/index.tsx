@@ -63,8 +63,11 @@ const TouristSpot: React.FC = () => {
                                         title="Sobre"
                                         addresses={spot.addresses}
                                         phones={spot.phones}
-                                        socialmidias={spot.redes}
+                                        socialMedias={spot.redes}
                                         email={spot.email}
+                                        openingHours={
+                                            spot.horario_funcionamento
+                                        }
                                     />
                                     <EntryValue
                                         title="Valor da Entrada"

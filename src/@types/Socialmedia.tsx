@@ -1,6 +1,6 @@
-export type SocialmediaType = {
+export type SocialMediaType = {
     icone: string;
-    nome: string;
+    nome: 'Facebook' | 'Instagram' | 'Twitter' | 'LinkedIn';
     url: string;
     user: string;
 };

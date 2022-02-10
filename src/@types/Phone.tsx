@@ -1,4 +1,4 @@
-export type PhonesType = {
+export type PhoneType = {
     id: number;
     nome: string;
     number: string;
