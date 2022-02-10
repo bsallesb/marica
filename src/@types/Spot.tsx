@@ -26,4 +26,5 @@ export type SpotType = {
     addresses: AddressType[];
     redes: SocialMediaType[];
     horario_funcionamento: OpeningHoursType[];
+    dicas_t: string;
 };

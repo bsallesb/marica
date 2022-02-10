@@ -6,11 +6,13 @@ import Container from '../../components/Container';
 import EntryValue from '../../components/EntryValue';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
+import IframeMap from '../../components/Iframe';
 import Informations from '../../components/InformationsSpot';
 import LoadingGate from '../../components/LoadingGate';
 import PageTitle from '../../components/PageTitle';
 import Pills from '../../components/Pills';
 import SpotSlider from '../../components/Slider';
+import SpotTip from '../../components/SpotTip';
 import Travellers from '../../components/Travellers';
 import Wrapper from '../../components/Wrapper';
 import { useSpots } from '../../hooks/TouristSpot';
@@ -35,7 +37,7 @@ const TouristSpot: React.FC = () => {
             )}
             <Container>
                 <LoadingGate waitFor={isLoading === false} meanWile="Loading">
-                    <div className="row">
+                    <div className="row mb-5">
                         <div className="col-8">
                             {spot && (
                                 <>
@@ -55,7 +57,10 @@ const TouristSpot: React.FC = () => {
                                             />
                                         )}
                                     <div className="mb-4 mt-2">
-                                        <p className="text-justify">
+                                        <p
+                                            style={{ whiteSpace: 'pre-wrap' }}
+                                            className="text-justify"
+                                        >
                                             {spot?.descricao_t}
                                         </p>
                                     </div>
@@ -69,6 +74,7 @@ const TouristSpot: React.FC = () => {
                                             spot.horario_funcionamento
                                         }
                                     />
+                                    <SpotTip title="Dicas" tip={spot.dicas_t} />
                                     <EntryValue
                                         title="Valor da Entrada"
                                         isFree={spot.gratuito}
@@ -97,6 +103,9 @@ const TouristSpot: React.FC = () => {
                                         )}
                                 </>
                             )}
+                        </div>
+                        <div className="col-4">
+                            {spot && <IframeMap address={spot?.addresses} />}
                         </div>
                     </div>
                 </LoadingGate>

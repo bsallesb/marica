@@ -118,10 +118,13 @@ const AboutSpot: React.FC<IAboutSpotProps> = ({
                                             </h2>
                                         </div>
                                     ) : (
-                                        <div className="px-2">
-                                            <h2 className="py-1 fs-5 m-0">
-                                                {info.label} {info.horario.abre}{' '}
-                                                às {info.horario.fecha}
+                                        <div className="px-2 pt-1">
+                                            <h2 className="d-flex fs-5 m-0">
+                                                <h3 className="fw-bold fs-5 me-2">
+                                                    {info.label}
+                                                </h3>{' '}
+                                                {info.horario.abre} às{' '}
+                                                {info.horario.fecha}
                                             </h2>
                                         </div>
                                     )}
