@@ -5,7 +5,7 @@ import {
     useContext,
     useMemo,
 } from 'react';
-import { CategorieType } from '../@types/Categorie';
+import { CategoryType } from '../@types/Category';
 import { SpotType } from '../@types/Spot';
 import Api from '../services/Api';
 
@@ -13,10 +13,14 @@ import Api from '../services/Api';
 interface SpotContextData {
     spot: SpotType | null;
     spots: SpotType[];
-    categories: CategorieType[];
+    category: CategoryType | null;
+    categories: CategoryType[];
     isLoading: boolean;
+    setCategory: (category: CategoryType) => void;
     getSpots: (text?: string) => Promise<void>;
     getSpot: (id: number) => Promise<void>;
+    getSpotsByCategory: (id: number) => Promise<void>;
+    getCategories: (id: number) => Promise<void>;
 }
 
 // Aqui é definido o Context (não precisa entender, é sempre exatamente assim)
@@ -42,11 +46,14 @@ export const useSpots = (): SpotContextData => {
 export const SpotsProvider: React.FC = ({ children }) => {
     const [spots, setSpots] = useState<SpotType[]>([]);
     const [spot, setSpot] = useState<SpotType | null>(null);
-    const [categories, setCategories] = useState<CategorieType[]>([]);
+    const [categories, setCategories] = useState<CategoryType[]>([]);
+    const [category, setCategory] = useState<CategoryType | null>(null);
     const [isLoading, setLoading] = useState(true);
 
     const getSpots = useCallback(async (searchText = ''): Promise<void> => {
         let url = '/pontos';
+
+        setLoading(true);
 
         if (searchText.length > 0) {
             url += `/busca?busca=${searchText}`;
@@ -63,10 +70,24 @@ export const SpotsProvider: React.FC = ({ children }) => {
                 setSpots([]);
                 setCategories([]);
             })
-            .finally();
+            .finally(() => setLoading(false));
+    }, []);
+
+    const getSpotsByCategory = useCallback(async (id): Promise<void> => {
+        setLoading(true);
+
+        Api.get(`pontos/categorias/${id}`)
+            .then(response => {
+                setSpots(response.data.collection);
+            })
+            .catch()
+            .finally(() => {
+                setLoading(false);
+            });
     }, []);
 
     const getSpot = useCallback(async (id: number): Promise<void> => {
+        setSpot(null);
         setLoading(true);
 
         Api.get(`/pontos/${id}`)
@@ -74,19 +95,55 @@ export const SpotsProvider: React.FC = ({ children }) => {
                 setSpot(response.data.item ?? null);
             })
             .catch()
-            .finally(() => setLoading(false));
+            .finally(() => {
+                setLoading(false);
+            });
     }, []);
+
+    const getCategories = useCallback(async (id): Promise<void> => {
+        Api.get(`/pontos/categorias`)
+            .then(response => {
+                const categoriesResponse =
+                    (response.data?.categorias as CategoryType[]) ??
+                    ([] as CategoryType[]);
+                setCategories(categoriesResponse);
+                const categoryById = categoriesResponse.find(
+                    _category => _category.id === id
+                );
+                if (categoryById) {
+                    setCategory(categoryById);
+                }
+            })
+            .catch()
+            .finally();
+    }, []);
+
     // Aqui são definidas quais informações estarão disponíveis "para fora" do Provider
     const providerValue = useMemo(
         () => ({
             spot,
             spots,
+            category,
             categories,
             isLoading,
+            setCategory,
             getSpots,
             getSpot,
+            getSpotsByCategory,
+            getCategories,
         }),
-        [spots, categories, isLoading, spot, getSpots, getSpot]
+        [
+            spots,
+            category,
+            categories,
+            isLoading,
+            spot,
+            setCategory,
+            getSpots,
+            getSpot,
+            getSpotsByCategory,
+            getCategories,
+        ]
     );
 
     return (

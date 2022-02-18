@@ -37,7 +37,7 @@ const OffCanvas: React.FC = () => (
                 <FaHome /> Inicial
             </Link>
             <Link
-                to="/"
+                to="/sobre-a-cidade"
                 className="fs-5 py-3 border-bottom text-decoration-none"
             >
                 <FiInfo /> Sobre a Cidade

@@ -6,9 +6,12 @@ import Container from '../../components/Container';
 import EntryValue from '../../components/EntryValue';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import IframeMap from '../../components/Iframe';
-import Informations from '../../components/InformationsSpot';
+import IframeSmallMap from '../../components/IframeSmallMap';
+import InformationsSpot from '../../components/InformationsSpot';
+import LoadingBanner from '../../components/LoadingBanner';
 import LoadingGate from '../../components/LoadingGate';
+import LoadingInfo from '../../components/LoadingInfo';
+import MeetOurApp from '../../components/MeetOurApp';
 import PageTitle from '../../components/PageTitle';
 import Pills from '../../components/Pills';
 import SpotSlider from '../../components/Slider';
@@ -18,7 +21,7 @@ import Wrapper from '../../components/Wrapper';
 import { useSpots } from '../../hooks/TouristSpot';
 
 const TouristSpot: React.FC = () => {
-    const { isLoading, spot, getSpot } = useSpots();
+    const { isLoading, spot, setCategory, getSpot } = useSpots();
     const { id } = useParams();
 
     useEffect(() => {
@@ -35,8 +38,15 @@ const TouristSpot: React.FC = () => {
                     `~slick-carousel/slick/slick-theme.css``;
                 </SpotSlider>
             )}
+            <LoadingGate
+                waitFor={isLoading === false}
+                meanWile={<LoadingBanner />}
+            />
             <Container>
-                <LoadingGate waitFor={isLoading === false} meanWile="Loading">
+                <LoadingGate
+                    waitFor={isLoading === false}
+                    meanWile={<LoadingInfo />}
+                >
                     <div className="row mb-5">
                         <div className="col-8">
                             {spot && (
@@ -51,14 +61,17 @@ const TouristSpot: React.FC = () => {
                                     {Array.isArray(spot?.categorias) &&
                                         spot?.categorias.length > 1 && (
                                             <Pills
+                                                setCategory={setCategory}
                                                 categories={spot.categorias}
-                                                url="/"
+                                                url="/pontos-turisticos/categorias"
                                                 color="secondary"
                                             />
                                         )}
                                     <div className="mb-4 mt-2">
                                         <p
-                                            style={{ whiteSpace: 'pre-wrap' }}
+                                            style={{
+                                                whiteSpace: 'pre-wrap',
+                                            }}
                                             className="text-justify"
                                         >
                                             {spot?.descricao_t}
@@ -74,38 +87,55 @@ const TouristSpot: React.FC = () => {
                                             spot.horario_funcionamento
                                         }
                                     />
-                                    <SpotTip title="Dicas" tip={spot.dicas_t} />
+                                    {spot.dicas_t && (
+                                        <SpotTip
+                                            title="Dicas"
+                                            tip={spot.dicas_t}
+                                        />
+                                    )}
                                     <EntryValue
                                         title="Valor da Entrada"
                                         isFree={spot.gratuito}
                                         price={spot.preco_t}
                                     />
                                     {Array.isArray(spot?.viajantes) &&
-                                        spot?.viajantes.length > 1 && (
+                                        spot?.viajantes.length > 0 && (
                                             <Travellers
                                                 title="Tipos de Viajantes"
                                                 travellerType={spot.viajantes}
                                             />
                                         )}
                                     {Array.isArray(spot?.estruturas) &&
-                                        spot?.estruturas.length > 1 && (
-                                            <Informations
+                                        spot?.estruturas.length > 0 && (
+                                            <InformationsSpot
                                                 title="Estruturas"
                                                 informations={spot.estruturas}
                                             />
                                         )}
                                     {Array.isArray(spot?.restricoes) &&
-                                        spot?.restricoes.length > 1 && (
-                                            <Informations
+                                        spot?.restricoes.length > 0 && (
+                                            <InformationsSpot
                                                 title="Restrições"
                                                 informations={spot.restricoes}
+                                            />
+                                        )}
+                                    {Array.isArray(spot?.formas_pagamento) &&
+                                        spot?.formas_pagamento.length > 0 && (
+                                            <InformationsSpot
+                                                title="Formas de Pagamento"
+                                                informations={
+                                                    spot.formas_pagamento
+                                                }
                                             />
                                         )}
                                 </>
                             )}
                         </div>
                         <div className="col-4">
-                            {spot && <IframeMap address={spot?.addresses} />}
+                            {spot && (
+                                <IframeSmallMap address={spot?.addresses} />
+                            )}
+                            <MeetOurApp />
                         </div>
                     </div>
                 </LoadingGate>

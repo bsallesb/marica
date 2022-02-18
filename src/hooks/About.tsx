@@ -5,66 +5,64 @@ import {
     useContext,
     useMemo,
 } from 'react';
-import { BannerType } from '../@types/Banner';
+import { AboutType } from '../@types/About';
 import Api from '../services/Api';
 
 // Aqui é definida a Interface com os tipos de dados de tudo que será disponibilizado "para fora" do Provider
-interface BannersContextData {
-    banners: BannerType[];
-    getBanners: () => Promise<void>;
+interface AboutContextData {
     isLoading: boolean;
+    about: AboutType | null;
+    getAbout: () => Promise<void>;
 }
 
 // Aqui é definido o Context (não precisa entender, é sempre exatamente assim)
-export const BannersContext = createContext<BannersContextData>(
-    {} as BannersContextData
+export const AboutContext = createContext<AboutContextData>(
+    {} as AboutContextData
 );
 
 // O useBanners() é o que você vai chamar dentro dos componentes pra acessar o conteúdo interno do Provider. Exemplo:
 /*
     const { banners, getBanners } = useBanners();
 */
-export const useBanners = (): BannersContextData => {
-    const context = useContext(BannersContext);
+export const useAbout = (): AboutContextData => {
+    const context = useContext(AboutContext);
 
     if (!context) {
-        throw new Error('useBanners must be within BannersProvider');
+        throw new Error('useAbout must be within AboutProvider');
     }
 
     return context;
 };
 
 // Aqui são definidas as variáveis de State e as funções do Provider
-export const BannersProvider: React.FC = ({ children }) => {
-    const [banners, setBanners] = useState<BannerType[]>([]);
+export const AboutProvider: React.FC = ({ children }) => {
+    const [about, setAbout] = useState<AboutType | null>(null);
     const [isLoading, setLoading] = useState(true);
 
-    const getBanners = useCallback(async (): Promise<void> => {
-        setLoading;
+    const getAbout = useCallback(async (): Promise<void> => {
+        setLoading(true);
 
-        Api.get('/banners')
+        Api.get('/apps/get')
             .then(response => {
-                setBanners(response.data);
+                setAbout(response?.data?.sobre?.content);
             })
-            .catch(() => {
-                setBanners([]);
-            })
+            .catch()
             .finally(() => setLoading(false));
     }, []);
 
     // Aqui são definidas quais informações estarão disponíveis "para fora" do Provider
     const providerValue = useMemo(
         () => ({
-            banners,
-            getBanners,
+            about,
             isLoading,
+            getAbout,
         }),
-        [banners, isLoading, getBanners]
+        [about, isLoading, getAbout]
     );
 
     return (
-        <BannersContext.Provider value={providerValue}>
+        <AboutContext.Provider value={providerValue}>
             {children}
-        </BannersContext.Provider>
+        </AboutContext.Provider>
     );
 };

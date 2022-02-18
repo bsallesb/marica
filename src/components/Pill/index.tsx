@@ -4,6 +4,7 @@ interface IPillProps {
     url: string;
     color?: string;
     size?: string;
+    onClick?: () => void;
 }
 
 const Pill: React.FC<IPillProps> = ({
@@ -11,8 +12,13 @@ const Pill: React.FC<IPillProps> = ({
     color = 'light',
     size = 'sm',
     children,
+    onClick,
 }) => (
-    <PillBtn to={url} className={`btn btn-${color} btn-${size}`}>
+    <PillBtn
+        to={url}
+        className={`btn btn-${color} btn-${size}`}
+        onClick={onClick}
+    >
         {children}
     </PillBtn>
 );

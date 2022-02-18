@@ -1,6 +1,5 @@
 import { AiOutlineArrowLeft } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
-import { TitleArrow, TitleSection } from './styled';
+import { LinkTitle } from './styled';
 
 interface IPageTitleProps {
     title: string;
@@ -14,26 +13,24 @@ const PageTitle: React.FC<IPageTitleProps> = ({
     url = '/',
 }) => {
     return (
-        <TitleSection
-            aria-label="breadcrumb"
-            className="d-flex align-items-center"
-        >
-            <ul className="breadcrumb m-0 d-flex align-items-center">
-                <TitleArrow className="fw-normal fs-5 me-2" to={url}>
-                    <AiOutlineArrowLeft />
-                </TitleArrow>
-                <li className="d-flex flex-column">
-                    {subtitle && (
-                        <Link to="/" className=" text-muted fs-6 fw-normal">
-                            {subtitle}
-                        </Link>
-                    )}
-                    <Link to="/" className="breadcrumb-item">
-                        {title}
-                    </Link>
-                </li>
-            </ul>
-        </TitleSection>
+        <div className="d-flex m-0 align-items-center">
+            <LinkTitle className="fw-normal fs-5 me-2" to={url}>
+                <AiOutlineArrowLeft />
+            </LinkTitle>
+            <div className="fw-bold">
+                {subtitle && (
+                    <LinkTitle
+                        to={url}
+                        className="text-muted text-decoration-none fs-6 fw-normal"
+                    >
+                        {subtitle}
+                    </LinkTitle>
+                )}
+                <p className="text-decoration-none fs-3 breadcrumb-item">
+                    {title}
+                </p>
+            </div>
+        </div>
     );
 };
 

@@ -1,4 +1,5 @@
 import { useCallback, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import Container from '../../components/Container';
 import Footer from '../../components/Footer';
@@ -8,17 +9,28 @@ import Map from '../../components/Map';
 import { useSpots } from '../../hooks/TouristSpot';
 import Card from '../../components/Card';
 import PageTitle from '../../components/PageTitle';
-import Pills from '../../components/Pills';
 import Wrapper from '../../components/Wrapper';
 import LoadingGate from '../../components/LoadingGate';
 import LoadingCards from '../../components/LoadingCards';
-import LoadingPills from '../../components/LoadingPills';
 
-export const TouristSpots: React.FC = () => {
-    const { isLoading, spots, setCategory, categories, getSpots } = useSpots();
+export const SpotCategory: React.FC = () => {
+    const {
+        spots,
+        isLoading,
+        categories,
+        category,
+        getSpotsByCategory,
+        setCategory,
+        getSpots,
+        getCategories,
+    } = useSpots();
+    const { id } = useParams();
 
     useEffect(() => {
-        getSpots();
+        getSpotsByCategory(parseInt(id ?? '', 10));
+        if (!categories.length) {
+            getCategories(parseInt(id ?? '', 10));
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -31,9 +43,13 @@ export const TouristSpots: React.FC = () => {
         <Wrapper>
             <Header />
             <Container>
-                <div className="row align-items-center mt-3 mb-4">
+                <div className="row align-items-center mt-3 mb-3">
                     <div className="col col-5 col-lg-6">
-                        <PageTitle title="Pontos Turísticos" />
+                        <PageTitle
+                            title={category?.label ?? 'Carregando...'}
+                            subtitle="Pontos Turísticos"
+                            url="/pontos-turisticos"
+                        />
                     </div>
                     <div className="d-flex col col-7 col-lg-6 m-0">
                         <Map url="/pontos-turisticos/mapa" />
@@ -45,20 +61,8 @@ export const TouristSpots: React.FC = () => {
                 </div>
                 <LoadingGate
                     waitFor={isLoading === false}
-                    meanWile={
-                        <>
-                            <LoadingPills show />
-                            <LoadingCards show />
-                        </>
-                    }
+                    meanWile={<LoadingCards show />}
                 >
-                    <Pills
-                        setCategory={setCategory}
-                        categories={categories}
-                        url="/pontos-turisticos/categorias"
-                        color="secondary"
-                        size="md"
-                    />
                     <div className="align-self-stretch pb-5 mt-3">
                         <div className="row row-cols-3 gy-4">
                             {spots.map(spot => (

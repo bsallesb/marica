@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import { AddressType } from './Address';
-import { CategorieType } from './Categorie';
+import { CategoryType } from './Category';
 import { ImageType } from './Image';
 import { InfoType } from './Information';
 import { OpeningHoursType } from './OpeningHours';
@@ -12,7 +12,7 @@ export type SpotType = {
     nome: string;
     id: number;
     capa: string;
-    categorias: CategorieType[];
+    categorias: CategoryType[];
     enderecos: AddressType[];
     descricao_t: string;
     estruturas: InfoType[];
@@ -27,4 +27,5 @@ export type SpotType = {
     redes: SocialMediaType[];
     horario_funcionamento: OpeningHoursType[];
     dicas_t: string;
+    formas_pagamento: InfoType[];
 };

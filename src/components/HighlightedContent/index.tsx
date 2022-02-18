@@ -79,7 +79,7 @@ const HighlightedContent: React.FC = () => (
             <HighlightedCard
                 title="Sobre a Cidade"
                 description="Conheça mais sobre Maricá"
-                url=""
+                url="/sobre-a-cidade"
                 icon={FaUniversity}
             />
         </div>

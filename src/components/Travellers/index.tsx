@@ -15,7 +15,10 @@ const Travellers: React.FC<IInformationsProps> = ({ title, travellerType }) => (
         </h1>
         <ul className="align-items-center p-0 row row-cols-3 pb-3">
             {travellerType.map(info => (
-                <li className="d-flex align-items-center list-unstyled col pb-4">
+                <li
+                    className="d-flex align-items-center list-unstyled col pb-4"
+                    key={info.label}
+                >
                     <CheckIcon className="px-2 text-secondary fs-5">
                         <FaRegCheckCircle />
                     </CheckIcon>

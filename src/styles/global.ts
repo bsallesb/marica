@@ -94,4 +94,8 @@ export const GlobalStyle = createGlobalStyle`
     .text-secondary {
         color: var(--secondary) !important;
     }
+
+    .form-control:focus {
+        box-shadow: none;
+    }
 `;
