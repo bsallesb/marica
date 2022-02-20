@@ -58,7 +58,10 @@ const SpotSlider: React.FC<ISpotSliderProps> = ({ images }) => (
         ) : (
             <div className="d-flex">
                 {images.map(image => (
-                    <div key={image.id}>
+                    <div
+                        key={image.id}
+                        className="flex-grow-1 align-self-stretch mb-4"
+                    >
                         <Cover
                             style={{ backgroundImage: `url(${image.src})` }}
                         />

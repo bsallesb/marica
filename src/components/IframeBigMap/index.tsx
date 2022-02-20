@@ -23,6 +23,7 @@ const AnyReactComponent: React.FC<IAnyReactComponentProps> = () => (
 );
 
 const IframeBigMap: React.FC<IframeMapProps> = ({ addresses, url, backTo }) => {
+    console.log(addresses);
     return (
         <div>
             <Title
@@ -37,16 +38,18 @@ const IframeBigMap: React.FC<IframeMapProps> = ({ addresses, url, backTo }) => {
                     bootstrapURLKeys={{
                         key: `${process.env.REACT_APP_GOOGLE_KEY}`,
                     }}
-                    defaultCenter={{
-                        lat: addresses[0].lat,
-                        lng: addresses[0].lng,
-                    }}
+                    yesIWantToUseGoogleMapApiInternals
                     defaultZoom={13}
+                    defaultCenter={{
+                        lat: -22.92016437953923713166659581474959850311279296875,
+                        lng: -42.81936358437220491168773151002824306488037109375,
+                    }}
                 >
                     {addresses.map(address => (
                         <AnyReactComponent
                             lat={address.lat}
                             lng={address.lng}
+                            key={address.id}
                         />
                     ))}
                 </GoogleMapReact>
