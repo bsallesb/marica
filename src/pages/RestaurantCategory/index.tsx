@@ -72,9 +72,9 @@ export const RestaurantCategory: React.FC = () => {
                                     nome={restaurant.nome}
                                     addresses={restaurant.enderecos}
                                     image={restaurant.capa}
-                                    url={`/hoteis-e-pousadas/${restaurant.id}`}
+                                    url={`/bares-e-restaurantes/${restaurant.id}`}
                                     categories={restaurant.categorias}
-                                    path="hoteis-e-pousadas"
+                                    path="bares-e-restaurantes"
                                 />
                             ))}
                         </div>

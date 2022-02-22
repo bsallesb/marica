@@ -18,6 +18,8 @@ import { Restaurants } from './pages/Restaurants';
 import { RestaurantsProvider } from './hooks/Restaurant';
 import Restaurant from './pages/Restaurant';
 import { RestaurantCategory } from './pages/RestaurantCategory';
+import { MapOfRestaurants } from './pages/MapOfRestaurants';
+import { Delivery } from './pages/Delivery';
 
 export const Routes: React.FC = () => (
     <>
@@ -76,6 +78,14 @@ export const Routes: React.FC = () => (
                                     <Route
                                         path="/bares-e-restaurantes/:id"
                                         element={<Restaurant />}
+                                    />
+                                    <Route
+                                        path="/bares-e-restaurantes/mapa"
+                                        element={<MapOfRestaurants />}
+                                    />
+                                    <Route
+                                        path="/delivery"
+                                        element={<Delivery />}
                                     />
                                 </Switch>
                             </BrowserRouter>

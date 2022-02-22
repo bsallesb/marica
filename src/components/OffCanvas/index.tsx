@@ -61,7 +61,7 @@ const OffCanvas: React.FC = () => (
                 <MdRestaurant /> Bares e Restaurantes
             </Link>
             <Link
-                to="/"
+                to="/delivery"
                 className="fs-5 py-3 border-bottom text-decoration-none"
             >
                 <FaMotorcycle /> Delivery

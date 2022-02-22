@@ -71,7 +71,7 @@ export const Restaurants: React.FC = () => {
                                     image={restaurant.capa}
                                     url={`/bares-e-restaurantes/${restaurant.id}`}
                                     categories={restaurant.categorias}
-                                    path="hoteis-e-pousadas"
+                                    path="bares-e-restaurantes"
                                     isDelivery={restaurant.is_delivery}
                                 />
                             ))}

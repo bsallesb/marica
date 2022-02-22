@@ -79,7 +79,7 @@ export const RestaurantsProvider: React.FC = ({ children }) => {
     const getRestaurantsByCategory = useCallback(async (id): Promise<void> => {
         setLoading(true);
 
-        Api.get(`hoteis-e-pousadas/categorias/${id}`)
+        Api.get(`bares-e-restaurantes/categorias/${id}`)
             .then(response => {
                 setRestaurants(response.data.collection);
             })

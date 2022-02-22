@@ -65,7 +65,7 @@ const Restaurant: React.FC = () => {
                                                 categories={
                                                     restaurant.categorias
                                                 }
-                                                url="/hoteis-e-pousadas/categorias"
+                                                url="/bares-e-restaurantes/categorias"
                                                 color="secondary"
                                             />
                                         )}

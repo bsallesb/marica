@@ -37,7 +37,7 @@ const HighlightedContent: React.FC = () => (
             <HighlightedCard
                 title="Delivery"
                 description="Receba o melhor de Maricá no conforto da sua casa"
-                url=""
+                url="/delivery"
                 icon={FaMotorcycle}
             />
             <HighlightedCard
