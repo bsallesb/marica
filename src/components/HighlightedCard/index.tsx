@@ -22,9 +22,13 @@ const HighlightedCard: React.FC<ICardProps> = ({
             <Link to={url} className="fs-1">
                 <Icon />
             </Link>
-            <div className="card-body">
-                <h5 className="card-title fs-5">{title}</h5>
-                <p className="card-text pb-4">{description}</p>
+            <div className="card-body pt-2">
+                <Link to={url} className="d-block fs-card-title fs-5">
+                    {title}
+                </Link>
+                <p className="d-block card-text pt-2 pb-3 text-muted">
+                    {description}
+                </p>
                 <Pill url={url} color="white" size="sm">
                     Acessar
                 </Pill>
