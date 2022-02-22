@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import { useEffect } from 'react';
 
 import Footer from '../../components/Footer';
@@ -16,9 +17,6 @@ export const AboutMarica: React.FC = () => {
         getAbout();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    // eslint-disable-next-line no-console
-    console.log('getAbout()', getAbout);
 
     return (
         <Wrapper>
