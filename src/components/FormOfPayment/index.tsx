@@ -1,14 +1,13 @@
 import { FaRegCheckCircle } from 'react-icons/fa';
 
 import { InfoType } from '../../@types/Information';
-import { SVGIcon } from './styles';
 
-interface IInformationsProps {
+interface FormOfPaymentProps {
     title: string;
     informations: InfoType[];
 }
 
-const InformationsSpot: React.FC<IInformationsProps> = ({
+const FormOfPayment: React.FC<FormOfPaymentProps> = ({
     title,
     informations,
 }) => (
@@ -19,15 +18,9 @@ const InformationsSpot: React.FC<IInformationsProps> = ({
         <ul className="align-items-center p-0 row row-cols-3 pb-3">
             {informations.map(info => (
                 <li className="d-flex align-items-center list-unstyled col pb-4">
-                    {info.icone ? (
-                        <div className="px-2 text-secondary">
-                            <SVGIcon src={info.icone} />
-                        </div>
-                    ) : (
-                        <div className="px-2 text-secondary">
-                            <FaRegCheckCircle />
-                        </div>
-                    )}
+                    <div className="px-2 text-secondary">
+                        <FaRegCheckCircle />
+                    </div>
                     <h2 className="px-2 fs-6 m-0">{info.label}</h2>
                 </li>
             ))}
@@ -35,4 +28,4 @@ const InformationsSpot: React.FC<IInformationsProps> = ({
     </div>
 );
 
-export default InformationsSpot;
+export default FormOfPayment;

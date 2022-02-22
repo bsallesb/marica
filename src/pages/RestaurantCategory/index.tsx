@@ -6,28 +6,28 @@ import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import SearchBar from '../../components/SearchBar';
 import Map from '../../components/Map';
-import { useSpots } from '../../hooks/TouristSpot';
+import { useRestaurants } from '../../hooks/Restaurant';
 import Card from '../../components/Card';
 import PageTitle from '../../components/PageTitle';
 import Wrapper from '../../components/Wrapper';
 import LoadingGate from '../../components/LoadingGate';
 import LoadingCards from '../../components/LoadingCards';
 
-export const SpotCategory: React.FC = () => {
+export const RestaurantCategory: React.FC = () => {
     const {
-        spots,
+        restaurants,
         isLoading,
         categories,
         category,
-        getSpotsByCategory,
+        getRestaurantsByCategory,
         setCategory,
-        getSpots,
+        getRestaurants,
         getCategories,
-    } = useSpots();
+    } = useRestaurants();
     const { id } = useParams();
 
     useEffect(() => {
-        getSpotsByCategory(parseInt(id ?? '', 10));
+        getRestaurantsByCategory(parseInt(id ?? '', 10));
         if (!categories.length) {
             getCategories(parseInt(id ?? '', 10));
         }
@@ -35,7 +35,7 @@ export const SpotCategory: React.FC = () => {
     }, []);
 
     const handleSearch = useCallback((searchText: string): void => {
-        getSpots(searchText);
+        getRestaurants(searchText);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -47,14 +47,14 @@ export const SpotCategory: React.FC = () => {
                     <div className="col col-5 col-lg-6">
                         <PageTitle
                             title={category?.label ?? 'Carregando...'}
-                            subtitle="Pontos Turísticos"
-                            url="/pontos-turisticos"
+                            subtitle="Bares e Restaurantes"
+                            url="/bares-e-restaurantes"
                         />
                     </div>
                     <div className="d-flex col col-7 col-lg-6 m-0">
-                        <Map url="/pontos-turisticos/mapa" />
+                        <Map url="/bares-e-restaurantes/mapa" />
                         <SearchBar
-                            placeholder="Buscar Pontos Turísticos"
+                            placeholder="Buscar Bares e Restaurantes"
                             onSearch={handleSearch}
                         />
                     </div>
@@ -65,16 +65,16 @@ export const SpotCategory: React.FC = () => {
                 >
                     <div className="align-self-stretch pb-5 mt-3">
                         <div className="row row-cols-3 gy-4">
-                            {spots.map(spot => (
+                            {restaurants.map(restaurant => (
                                 <Card
                                     setCategory={setCategory}
-                                    key={spot.id}
-                                    nome={spot.nome}
-                                    addresses={spot.enderecos}
-                                    image={spot.capa}
-                                    url={`/pontos-turisticos/${spot.id}`}
-                                    categories={spot.categorias}
-                                    path="pontos-turisticos"
+                                    key={restaurant.id}
+                                    nome={restaurant.nome}
+                                    addresses={restaurant.enderecos}
+                                    image={restaurant.capa}
+                                    url={`/hoteis-e-pousadas/${restaurant.id}`}
+                                    categories={restaurant.categorias}
+                                    path="hoteis-e-pousadas"
                                 />
                             ))}
                         </div>

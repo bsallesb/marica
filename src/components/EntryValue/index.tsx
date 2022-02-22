@@ -19,9 +19,9 @@ const EntryValue: React.FC<IEntryValueProps> = ({ title, isFree, price }) => (
                     <FaRegMoneyBillAlt />
                 </CheckIcon>
                 {isFree ? (
-                    <h2 className="px-2 fs-5 m-0">Gratuito</h2>
+                    <h2 className="px-2 fs-6 m-0">Gratuito</h2>
                 ) : (
-                    <h2 className="px-2 fs-5 m-0">{price}</h2>
+                    <h2 className="px-2 fs-6 m-0">{price}</h2>
                 )}
             </li>
         </ul>

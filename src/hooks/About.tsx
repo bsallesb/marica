@@ -5,13 +5,12 @@ import {
     useContext,
     useMemo,
 } from 'react';
-import { AboutType } from '../@types/About';
 import Api from '../services/Api';
 
 // Aqui é definida a Interface com os tipos de dados de tudo que será disponibilizado "para fora" do Provider
 interface AboutContextData {
     isLoading: boolean;
-    about: AboutType | null;
+    about: string;
     getAbout: () => Promise<void>;
 }
 
@@ -36,7 +35,7 @@ export const useAbout = (): AboutContextData => {
 
 // Aqui são definidas as variáveis de State e as funções do Provider
 export const AboutProvider: React.FC = ({ children }) => {
-    const [about, setAbout] = useState<AboutType | null>(null);
+    const [about, setAbout] = useState('');
     const [isLoading, setLoading] = useState(true);
 
     const getAbout = useCallback(async (): Promise<void> => {

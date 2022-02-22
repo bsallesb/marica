@@ -70,6 +70,7 @@ export const TouristSpots: React.FC = () => {
                                     image={spot.capa}
                                     url={`/pontos-turisticos/${spot.id}`}
                                     categories={spot.categorias}
+                                    path="pontos-turisticos"
                                 />
                             ))}
                         </div>

@@ -1,5 +1,5 @@
 import { AiOutlineMail } from 'react-icons/ai';
-import { BsTelephone } from 'react-icons/bs';
+import { BsGlobe2, BsTelephone } from 'react-icons/bs';
 import {
     FaInstagram,
     FaWhatsapp,
@@ -23,6 +23,7 @@ interface IAboutSpotProps {
     email: string;
     socialMedias: SocialMediaType[];
     openingHours: OpeningHoursType[];
+    websites?: string;
 }
 
 const icons = {
@@ -39,20 +40,21 @@ const AboutSpot: React.FC<IAboutSpotProps> = ({
     email,
     socialMedias,
     openingHours,
+    websites,
 }) => {
     return (
         <div className="mt-5">
             <h1 className="fs-4 fw-bold border-bottom pb-2 border-2 mb-4">
                 {title}
             </h1>
-            <ul className="align-items-center p-0 pb-3">
+            <ul className="align-items-center p-0 pb-2">
                 {addresses && (
                     <li className="d-flex align-items-center list-unstyled col pb-2">
                         <CheckIcon className="px-2 text-secondary fs-5">
                             <GrLocation color="#6ebd00" />
                         </CheckIcon>
                         {addresses.map(address => (
-                            <h2 className="px-2 fs-5 m-0" key={address.id}>
+                            <h2 className="px-2 fs-6 m-0" key={address.id}>
                                 {address.label}
                             </h2>
                         ))}
@@ -63,7 +65,7 @@ const AboutSpot: React.FC<IAboutSpotProps> = ({
                         {phones.map(phone => (
                             <div
                                 key={phone.id}
-                                className="d-flex my-3 align-items-center"
+                                className="d-flex my-2 align-items-center"
                             >
                                 {phone.whatsapp ? (
                                     <CheckIcon className="px-2 text-secondary fs-5">
@@ -75,8 +77,8 @@ const AboutSpot: React.FC<IAboutSpotProps> = ({
                                     </CheckIcon>
                                 )}
                                 <div className="d-flex flex-column px-2">
-                                    <h2 className="fs-5 m-0">{phone.nome}</h2>
-                                    <h2 className="fs-5 m-0">{phone.number}</h2>
+                                    <h2 className="fs-6 m-0">{phone.nome}</h2>
+                                    <h2 className="fs-6 m-0">{phone.number}</h2>
                                 </div>
                             </div>
                         ))}
@@ -87,7 +89,24 @@ const AboutSpot: React.FC<IAboutSpotProps> = ({
                         <CheckIcon className="px-2 text-secondary fs-5">
                             <AiOutlineMail />
                         </CheckIcon>
-                        <h2 className="px-2 fs-5 m-0">{email}</h2>
+                        <h2 className="px-2 fs-6 m-0">{email}</h2>
+                    </li>
+                )}
+                {websites && (
+                    <li className="d-flex align-items-center list-unstyled col pb-2">
+                        <CheckIcon className="px-2 text-secondary fs-5">
+                            <BsGlobe2 />
+                        </CheckIcon>
+                        <h2 className="px-2 fs-6 m-0">
+                            <a
+                                href={websites}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-decoration-none"
+                            >
+                                {websites}
+                            </a>
+                        </h2>
                     </li>
                 )}
                 {socialMedias && (
@@ -101,7 +120,7 @@ const AboutSpot: React.FC<IAboutSpotProps> = ({
                                             <Icon />
                                         </CheckIcon>
                                     </CheckIcon>
-                                    <h2 className="px-2 fs-5 m-0">
+                                    <h2 className="px-2 fs-6 m-0">
                                         <a
                                             href={socialMedia.url}
                                             target="_blank"
@@ -117,7 +136,7 @@ const AboutSpot: React.FC<IAboutSpotProps> = ({
                     </li>
                 )}
                 {Array.isArray(openingHours) && openingHours.length > 0 && (
-                    <li className="list-unstyled col pb-1">
+                    <li className="list-unstyled col">
                         <div className="d-flex my-3">
                             <CheckIcon className="px-2 text-secondary fs-5">
                                 <FaRegClock />
@@ -127,20 +146,20 @@ const AboutSpot: React.FC<IAboutSpotProps> = ({
                                     <div className="d-flex flex-column">
                                         {info.is24 ? (
                                             <div className="px-2">
-                                                <h2 className="px-2 fs-5 m-0">
+                                                <h2 className="px-2 fs-6 m-0">
                                                     Aberto 24 horas
                                                 </h2>
                                             </div>
                                         ) : (
                                             <div className="px-2 pt-1">
-                                                <h2 className="d-flex fs-5 m-0">
+                                                <h2 className="d-flex fs-6 m-0">
                                                     <h3
                                                         style={{ width: 102 }}
-                                                        className="fw-bold fs-5 me-2"
+                                                        className="fw-bold fs-6 me-2"
                                                     >
                                                         {info.label}
                                                     </h3>{' '}
-                                                    <h3 className="ps-3 fs-5 me-2">
+                                                    <h3 className="ps-3 fs-6 me-2">
                                                         {info.horario.abre} às{' '}
                                                         {info.horario.fecha}
                                                     </h3>

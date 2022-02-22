@@ -25,13 +25,13 @@ const HighlightedContent: React.FC = () => (
             <HighlightedCard
                 title="Hotéis e Pousadas"
                 description="Saiba onde se hospedar em Maricá"
-                url=""
+                url="/hoteis-e-pousadas"
                 icon={FaBed}
             />
             <HighlightedCard
                 title="Bares e Restaurantes"
                 description="Aprecie a gastronomia de Maricá"
-                url=""
+                url="/bares-e-restaurantes"
                 icon={MdRestaurant}
             />
             <HighlightedCard

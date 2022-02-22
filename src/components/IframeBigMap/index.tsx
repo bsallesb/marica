@@ -1,12 +1,14 @@
 import GoogleMapReact from 'google-map-react';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { ImLocation2 } from 'react-icons/im';
+import { HotelType } from '../../@types/Hotel';
+import { RestaurantType } from '../../@types/Restaurant';
 
-import { AddressType } from '../../@types/Address';
+import { SpotType } from '../../@types/Spot';
 import { LocationPoint, Title } from './styles';
 
 interface IframeMapProps {
-    addresses: AddressType[];
+    items: SpotType[] | HotelType[] | RestaurantType[];
     url: string;
     backTo: string;
 }
@@ -16,14 +18,13 @@ interface IAnyReactComponentProps {
     lng: number;
 }
 
-const AnyReactComponent: React.FC<IAnyReactComponentProps> = () => (
+const MapMarker: React.FC<IAnyReactComponentProps> = () => (
     <LocationPoint>
         <ImLocation2 color="red" className="fs-2" />
     </LocationPoint>
 );
 
-const IframeBigMap: React.FC<IframeMapProps> = ({ addresses, url, backTo }) => {
-    console.log(addresses);
+const IframeBigMap: React.FC<IframeMapProps> = ({ items, url, backTo }) => {
     return (
         <div>
             <Title
@@ -45,13 +46,15 @@ const IframeBigMap: React.FC<IframeMapProps> = ({ addresses, url, backTo }) => {
                         lng: -42.81936358437220491168773151002824306488037109375,
                     }}
                 >
-                    {addresses.map(address => (
-                        <AnyReactComponent
-                            lat={address.lat}
-                            lng={address.lng}
-                            key={address.id}
-                        />
-                    ))}
+                    {items?.map(item =>
+                        item?.enderecos?.map(address => (
+                            <MapMarker
+                                lat={address.lat}
+                                lng={address.lng}
+                                key={address.id}
+                            />
+                        ))
+                    )}
                 </GoogleMapReact>
             </div>
         </div>

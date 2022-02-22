@@ -38,7 +38,7 @@ export const AboutMarica: React.FC = () => {
                             }}
                             className="mt-4"
                         >
-                            {about}
+                            <div dangerouslySetInnerHTML={{ __html: about }} />
                         </div>
                     </div>
                 </Card>

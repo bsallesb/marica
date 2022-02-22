@@ -18,13 +18,6 @@ export const Section = styled.div`
     }
 `;
 
-export const Pill = styled.span`
-    margin: 0px 12px 15px 0px;
-    border-radius: 15px;
-    font-size: 12px;
-    padding: 2px 20px 2px 20px;
-`;
-
 export const BorderCard = styled.div`
     border-radius: 5px;
 `;
