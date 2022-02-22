@@ -52,7 +52,7 @@ export const RestaurantsProvider: React.FC = ({ children }) => {
 
     const getRestaurants = useCallback(
         async (searchText = ''): Promise<void> => {
-            let url = '/restaurantes?fields=is_delivery';
+            let url = '/restaurantes';
 
             setLoading(true);
 
@@ -60,7 +60,7 @@ export const RestaurantsProvider: React.FC = ({ children }) => {
                 url += `/busca?busca=${searchText}`;
             }
 
-            Api.get(url)
+            Api.get(url, { params: { fileds: 'is_delivery' } })
                 .then(response => {
                     setRestaurants(response.data.collection);
                     if (response.data.categorias) {

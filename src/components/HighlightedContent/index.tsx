@@ -43,7 +43,7 @@ const HighlightedContent: React.FC = () => (
             <HighlightedCard
                 title="Comércio Local"
                 description="Veja onde fazer as suas compras"
-                url=""
+                url="/comercios"
                 icon={MdStore}
             />
             <HighlightedCard

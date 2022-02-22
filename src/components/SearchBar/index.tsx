@@ -12,7 +12,6 @@ const SearchBar: React.FC<ISearchBarProps> = ({
     onSearch,
 }) => {
     const [searchText, setSearchText] = useState('');
-
     return (
         <Form className="flex-grow-1">
             <div className="d-flex px-3">

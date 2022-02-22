@@ -9,7 +9,7 @@ export const Button = styled.button`
     background-color: #fff;
 `;
 
-export const Form = styled.form`
+export const Form = styled.div`
     border-radius: 20px;
     border-color: #000;
     border: solid;

@@ -20,6 +20,8 @@ import Restaurant from './pages/Restaurant';
 import { RestaurantCategory } from './pages/RestaurantCategory';
 import { MapOfRestaurants } from './pages/MapOfRestaurants';
 import { Delivery } from './pages/Delivery';
+import { BusinessesProvider } from './hooks/Business';
+import { Businesses } from './pages/Businesses';
 
 export const Routes: React.FC = () => (
     <>
@@ -28,67 +30,73 @@ export const Routes: React.FC = () => (
                 <HotelsProvider>
                     <RestaurantsProvider>
                         <AboutProvider>
-                            <BrowserRouter>
-                                <Switch>
-                                    <Route path="/" element={<Home />} />
-                                    <Route
-                                        path="/pontos-turisticos"
-                                        element={<TouristSpots />}
-                                    />
-                                    <Route
-                                        path="/pontos-turisticos/categorias/:id/:label"
-                                        element={<SpotCategory />}
-                                    />
-                                    <Route
-                                        path="/pontos-turisticos/:id"
-                                        element={<TouristSpot />}
-                                    />
-                                    <Route
-                                        path="/sobre-a-cidade"
-                                        element={<AboutMarica />}
-                                    />
-                                    <Route
-                                        path="/pontos-turisticos/mapa"
-                                        element={<MapOfSpots />}
-                                    />
-                                    <Route
-                                        path="/hoteis-e-pousadas"
-                                        element={<Hotels />}
-                                    />
-                                    <Route
-                                        path="/hoteis-e-pousadas/categorias/:id/:label"
-                                        element={<HotelCategory />}
-                                    />
-                                    <Route
-                                        path="/hoteis-e-pousadas/:id"
-                                        element={<Hotel />}
-                                    />
-                                    <Route
-                                        path="/hoteis-e-pousadas/mapa"
-                                        element={<MapOfHotels />}
-                                    />
-                                    <Route
-                                        path="/bares-e-restaurantes"
-                                        element={<Restaurants />}
-                                    />
-                                    <Route
-                                        path="/bares-e-restaurantes/categorias/:id/:label"
-                                        element={<RestaurantCategory />}
-                                    />
-                                    <Route
-                                        path="/bares-e-restaurantes/:id"
-                                        element={<Restaurant />}
-                                    />
-                                    <Route
-                                        path="/bares-e-restaurantes/mapa"
-                                        element={<MapOfRestaurants />}
-                                    />
-                                    <Route
-                                        path="/delivery"
-                                        element={<Delivery />}
-                                    />
-                                </Switch>
-                            </BrowserRouter>
+                            <BusinessesProvider>
+                                <BrowserRouter>
+                                    <Switch>
+                                        <Route path="/" element={<Home />} />
+                                        <Route
+                                            path="/pontos-turisticos"
+                                            element={<TouristSpots />}
+                                        />
+                                        <Route
+                                            path="/pontos-turisticos/categorias/:id/:label"
+                                            element={<SpotCategory />}
+                                        />
+                                        <Route
+                                            path="/pontos-turisticos/:id"
+                                            element={<TouristSpot />}
+                                        />
+                                        <Route
+                                            path="/sobre-a-cidade"
+                                            element={<AboutMarica />}
+                                        />
+                                        <Route
+                                            path="/pontos-turisticos/mapa"
+                                            element={<MapOfSpots />}
+                                        />
+                                        <Route
+                                            path="/hoteis-e-pousadas"
+                                            element={<Hotels />}
+                                        />
+                                        <Route
+                                            path="/hoteis-e-pousadas/categorias/:id/:label"
+                                            element={<HotelCategory />}
+                                        />
+                                        <Route
+                                            path="/hoteis-e-pousadas/:id"
+                                            element={<Hotel />}
+                                        />
+                                        <Route
+                                            path="/hoteis-e-pousadas/mapa"
+                                            element={<MapOfHotels />}
+                                        />
+                                        <Route
+                                            path="/bares-e-restaurantes"
+                                            element={<Restaurants />}
+                                        />
+                                        <Route
+                                            path="/bares-e-restaurantes/categorias/:id/:label"
+                                            element={<RestaurantCategory />}
+                                        />
+                                        <Route
+                                            path="/bares-e-restaurantes/:id"
+                                            element={<Restaurant />}
+                                        />
+                                        <Route
+                                            path="/bares-e-restaurantes/mapa"
+                                            element={<MapOfRestaurants />}
+                                        />
+                                        <Route
+                                            path="/delivery"
+                                            element={<Delivery />}
+                                        />
+                                        <Route
+                                            path="/comercios"
+                                            element={<Businesses />}
+                                        />
+                                    </Switch>
+                                </BrowserRouter>
+                            </BusinessesProvider>
                         </AboutProvider>
                     </RestaurantsProvider>
                 </HotelsProvider>

@@ -54,7 +54,7 @@ export const HotelCategory: React.FC = () => {
                     <div className="d-flex col col-7 col-lg-6 m-0">
                         <Map url="/hoteis-e-pousadas/mapa" />
                         <SearchBar
-                            placeholder="Buscar Pontos Turísticos"
+                            placeholder="Buscar Hotéis e Pousadas"
                             onSearch={handleSearch}
                         />
                     </div>
