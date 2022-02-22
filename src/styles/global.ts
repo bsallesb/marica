@@ -91,6 +91,18 @@ export const GlobalStyle = createGlobalStyle`
         }
     }
 
+    .btn-white {
+        color: var(--secondary) !important;
+        background-color: white;
+        border-color: var(--secondary);
+                        
+        &:hover {
+            color: rgb(130, 210, 100);
+            background-color: white;
+            border-color: rgb(130, 210, 100);
+        }
+    }
+
     .text-secondary {
         color: var(--secondary) !important;
     }

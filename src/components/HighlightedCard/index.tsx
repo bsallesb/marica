@@ -1,7 +1,8 @@
 import { IconType } from 'react-icons';
 import { Link } from 'react-router-dom';
+import Pill from '../Pill';
 
-import { Button, CardSection } from './styled';
+import { CardSection } from './styled';
 
 interface ICardProps {
     title: string;
@@ -24,9 +25,9 @@ const HighlightedCard: React.FC<ICardProps> = ({
             <div className="card-body">
                 <h5 className="card-title fs-5">{title}</h5>
                 <p className="card-text pb-4">{description}</p>
-                <Button type="button" href={url} className="btn btn-success">
+                <Pill url={url} color="white" size="sm">
                     Acessar
-                </Button>
+                </Pill>
             </div>
         </div>
     </CardSection>
