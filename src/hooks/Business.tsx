@@ -13,9 +13,11 @@ import Api from '../services/Api';
 interface BusinessContextData {
     businesses: BusinessType[];
     categories: CategoryType[];
+    business: BusinessType | null;
     category: CategoryType | null;
     isLoading: boolean;
     getBusinesses: (text?: string) => Promise<void>;
+    getBusiness: (id: number) => Promise<void>;
     setCategory: (category: CategoryType) => void;
 }
 
@@ -41,6 +43,7 @@ export const useBusinesses = (): BusinessContextData => {
 // Aqui são definidas as variáveis de State e as funções do Provider
 export const BusinessesProvider: React.FC = ({ children }) => {
     const [businesses, setBusinesses] = useState<BusinessType[]>([]);
+    const [business, setBusiness] = useState<BusinessType | null>(null);
     const [categories, setCategories] = useState<CategoryType[]>([]);
     const [category, setCategory] = useState<CategoryType | null>(null);
     const [isLoading, setLoading] = useState(true);
@@ -70,22 +73,38 @@ export const BusinessesProvider: React.FC = ({ children }) => {
         []
     );
 
+    const getBusiness = useCallback(async (id): Promise<void> => {
+        setBusiness(null);
+        setLoading(true);
+
+        Api.get(`/comercios/${id}`)
+            .then(response => {
+                setBusiness(response?.data?.item ?? null);
+            })
+            .catch()
+            .finally(() => setLoading(false));
+    }, []);
+
     // Aqui são definidas quais informações estarão disponíveis "para fora" do Provider
     const providerValue = useMemo(
         () => ({
             businesses,
+            business,
             categories,
             category,
             isLoading,
             getBusinesses,
+            getBusiness,
             setCategory,
         }),
         [
             businesses,
+            business,
             categories,
             category,
             isLoading,
             getBusinesses,
+            getBusiness,
             setCategory,
         ]
     );

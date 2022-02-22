@@ -36,7 +36,7 @@ export const Businesses: React.FC = () => {
                         <PageTitle title="Comércio Local" />
                     </div>
                     <div className="d-flex col col-7 col-lg-6 m-0">
-                        <Map url="/coomercio/mapa" />
+                        <Map url="/coomercio-local/mapa" />
                         <SearchBar
                             placeholder="Buscar Comércio Local"
                             onSearch={handleSearch}
@@ -55,7 +55,7 @@ export const Businesses: React.FC = () => {
                     <Pills
                         setCategory={setCategory}
                         categories={categories}
-                        url="/comercio/categorias"
+                        url="/comercio-local/categorias"
                         color="secondary"
                         size="md"
                     />
@@ -68,9 +68,9 @@ export const Businesses: React.FC = () => {
                                     nome={business.nome}
                                     addresses={business.enderecos}
                                     image={business.capa}
-                                    url={`/comercio/${business.id}`}
+                                    url={`/comercio-local/${business.id}`}
                                     categories={business.categorias}
-                                    path="comercio"
+                                    path="comercio-local"
                                     isDelivery={business.is_delivery}
                                 />
                             ))}

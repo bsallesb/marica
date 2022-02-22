@@ -22,6 +22,7 @@ import { MapOfRestaurants } from './pages/MapOfRestaurants';
 import { Delivery } from './pages/Delivery';
 import { BusinessesProvider } from './hooks/Business';
 import { Businesses } from './pages/Businesses';
+import Business from './pages/Business';
 
 export const Routes: React.FC = () => (
     <>
@@ -91,8 +92,12 @@ export const Routes: React.FC = () => (
                                             element={<Delivery />}
                                         />
                                         <Route
-                                            path="/comercios"
+                                            path="/comercio-local"
                                             element={<Businesses />}
+                                        />
+                                        <Route
+                                            path="/comercio-local/:id"
+                                            element={<Business />}
                                         />
                                     </Switch>
                                 </BrowserRouter>

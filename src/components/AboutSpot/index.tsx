@@ -8,7 +8,7 @@ import {
     FaLinkedinIn,
     FaRegClock,
 } from 'react-icons/fa';
-import { GrLocation } from 'react-icons/gr';
+import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { AddressType } from '../../@types/Address';
 import { OpeningHoursType } from '../../@types/OpeningHours';
 import { PhoneType } from '../../@types/Phone';
@@ -51,7 +51,7 @@ const AboutSpot: React.FC<IAboutSpotProps> = ({
                 {addresses && (
                     <li className="d-flex align-items-center list-unstyled col pb-2">
                         <CheckIcon className="px-2 text-secondary fs-5">
-                            <GrLocation color="#6ebd00" />
+                            <HiOutlineLocationMarker color="#6ebd00" />
                         </CheckIcon>
                         {addresses.map(address => (
                             <h2 className="px-2 fs-6 m-0" key={address.id}>
@@ -143,7 +143,10 @@ const AboutSpot: React.FC<IAboutSpotProps> = ({
                             </CheckIcon>
                             <div className="d-flex flex-column">
                                 {openingHours.map(info => (
-                                    <div className="d-flex flex-column">
+                                    <div
+                                        className="d-flex flex-column"
+                                        key={info.label}
+                                    >
                                         {info.is24 ? (
                                             <div className="px-2">
                                                 <h2 className="px-2 fs-6 m-0">
