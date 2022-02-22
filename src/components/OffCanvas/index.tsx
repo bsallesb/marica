@@ -43,19 +43,19 @@ const OffCanvas: React.FC = () => (
                 <FiInfo /> Sobre a Cidade
             </Link>
             <Link
-                to="/pontos"
+                to="/pontos-turisticos"
                 className="fs-5 py-3 border-bottom text-decoration-none"
             >
                 <FaUmbrellaBeach /> Pontos Turísticos
             </Link>
             <Link
-                to="/"
+                to="/hoteis-e-pousadas"
                 className="fs-5 py-3 border-bottom text-decoration-none"
             >
                 <FaBed /> Hoteís e Pousadas
             </Link>
             <Link
-                to="/"
+                to="/bares-e-restaurantes"
                 className="fs-5 py-3 border-bottom text-decoration-none"
             >
                 <MdRestaurant /> Bares e Restaurantes
