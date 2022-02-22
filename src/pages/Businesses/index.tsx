@@ -71,7 +71,7 @@ export const Businesses: React.FC = () => {
                                     url={`/comercio/${business.id}`}
                                     categories={business.categorias}
                                     path="comercio"
-                                    isDelivery={business.isDelivery}
+                                    isDelivery={business.is_delivery}
                                 />
                             ))}
                         </div>
