@@ -1,4 +1,5 @@
 import { useCallback, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import Container from '../../components/Container';
 import Footer from '../../components/Footer';
@@ -8,18 +9,28 @@ import Map from '../../components/Map';
 import { useBusinesses } from '../../hooks/Business';
 import Card from '../../components/Card';
 import PageTitle from '../../components/PageTitle';
-import Pills from '../../components/Pills';
 import Wrapper from '../../components/Wrapper';
 import LoadingGate from '../../components/LoadingGate';
 import LoadingCards from '../../components/LoadingCards';
-import LoadingPills from '../../components/LoadingPills';
 
-export const Businesses: React.FC = () => {
-    const { isLoading, businesses, categories, setCategory, getBusinesses } =
-        useBusinesses();
+export const BusinessCategory: React.FC = () => {
+    const {
+        businesses,
+        isLoading,
+        categories,
+        category,
+        getBusinessesByCategory,
+        setCategory,
+        getBusinesses,
+        getCategories,
+    } = useBusinesses();
+    const { id } = useParams();
 
     useEffect(() => {
-        getBusinesses();
+        getBusinessesByCategory(parseInt(id ?? '', 10));
+        if (!categories.length) {
+            getCategories(parseInt(id ?? '', 10));
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -27,13 +38,18 @@ export const Businesses: React.FC = () => {
         getBusinesses(searchText);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
     return (
         <Wrapper>
             <Header />
             <Container>
-                <div className="row align-items-center mt-3 mb-4">
+                <div className="row align-items-center mt-3 mb-3">
                     <div className="col col-5 col-lg-6">
-                        <PageTitle title="Comércio Local" />
+                        <PageTitle
+                            title={category?.label ?? 'Carregando...'}
+                            subtitle="Comércio Local"
+                            url="/comercio-local"
+                        />
                     </div>
                     <div className="d-flex col col-7 col-lg-6 m-0">
                         <Map url="/comercio-local/mapa" />
@@ -45,20 +61,8 @@ export const Businesses: React.FC = () => {
                 </div>
                 <LoadingGate
                     waitFor={isLoading === false}
-                    meanWile={
-                        <>
-                            <LoadingPills show />
-                            <LoadingCards show />
-                        </>
-                    }
+                    meanWile={<LoadingCards show />}
                 >
-                    <Pills
-                        setCategory={setCategory}
-                        categories={categories}
-                        url="/comercio-local/categorias"
-                        color="secondary"
-                        size="md"
-                    />
                     <div className="align-self-stretch pb-5 mt-3">
                         <div className="row row-cols-3 gy-4">
                             {businesses.map(business => (
@@ -71,7 +75,6 @@ export const Businesses: React.FC = () => {
                                     url={`/comercio-local/${business.id}`}
                                     categories={business.categorias}
                                     path="comercio-local"
-                                    isDelivery={business.is_delivery}
                                 />
                             ))}
                         </div>

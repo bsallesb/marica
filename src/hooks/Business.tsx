@@ -18,7 +18,9 @@ interface BusinessContextData {
     isLoading: boolean;
     getBusinesses: (text?: string) => Promise<void>;
     getBusiness: (id: number) => Promise<void>;
+    getBusinessesByCategory: (id: number) => Promise<void>;
     setCategory: (category: CategoryType) => void;
+    getCategories: (id: number) => Promise<void>;
 }
 
 // Aqui é definido o Context (não precisa entender, é sempre exatamente assim)
@@ -73,6 +75,18 @@ export const BusinessesProvider: React.FC = ({ children }) => {
         []
     );
 
+    const getBusinessesByCategory = useCallback(
+        async (id: number): Promise<void> => {
+            Api.get(`/comercios/categorias/${id}`)
+                .then(response => {
+                    setBusinesses(response?.data?.collection);
+                })
+                .catch()
+                .finally(() => setLoading(false));
+        },
+        []
+    );
+
     const getBusiness = useCallback(async (id): Promise<void> => {
         setBusiness(null);
         setLoading(true);
@@ -85,6 +99,24 @@ export const BusinessesProvider: React.FC = ({ children }) => {
             .finally(() => setLoading(false));
     }, []);
 
+    const getCategories = useCallback(async (id): Promise<void> => {
+        Api.get(`/pontos/categorias`)
+            .then(response => {
+                const categoriesResponse =
+                    (response.data?.categorias as CategoryType[]) ??
+                    ([] as CategoryType[]);
+                setCategories(categoriesResponse);
+                const categoryById = categoriesResponse.find(
+                    _category => _category.id === id
+                );
+                if (categoryById) {
+                    setCategory(categoryById);
+                }
+            })
+            .catch()
+            .finally();
+    }, []);
+
     // Aqui são definidas quais informações estarão disponíveis "para fora" do Provider
     const providerValue = useMemo(
         () => ({
@@ -95,7 +127,9 @@ export const BusinessesProvider: React.FC = ({ children }) => {
             isLoading,
             getBusinesses,
             getBusiness,
+            getBusinessesByCategory,
             setCategory,
+            getCategories,
         }),
         [
             businesses,
@@ -105,7 +139,9 @@ export const BusinessesProvider: React.FC = ({ children }) => {
             isLoading,
             getBusinesses,
             getBusiness,
+            getBusinessesByCategory,
             setCategory,
+            getCategories,
         ]
     );
 

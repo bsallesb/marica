@@ -23,6 +23,8 @@ import { Delivery } from './pages/Delivery';
 import { BusinessesProvider } from './hooks/Business';
 import { Businesses } from './pages/Businesses';
 import Business from './pages/Business';
+import { BusinessCategory } from './pages/BusinessCategory';
+import { MapOfBusinesses } from './pages/MapOfBusinesses';
 
 export const Routes: React.FC = () => (
     <>
@@ -98,6 +100,14 @@ export const Routes: React.FC = () => (
                                         <Route
                                             path="/comercio-local/:id"
                                             element={<Business />}
+                                        />
+                                        <Route
+                                            path="/comercio-local/categorias/:id/:label"
+                                            element={<BusinessCategory />}
+                                        />
+                                        <Route
+                                            path="/comercio-local/mapa"
+                                            element={<MapOfBusinesses />}
                                         />
                                     </Switch>
                                 </BrowserRouter>

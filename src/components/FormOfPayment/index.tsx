@@ -17,7 +17,10 @@ const FormOfPayment: React.FC<FormOfPaymentProps> = ({
         </h1>
         <ul className="align-items-center p-0 row row-cols-3 pb-3">
             {informations.map(info => (
-                <li className="d-flex align-items-center list-unstyled col pb-4">
+                <li
+                    className="d-flex align-items-center list-unstyled col pb-4"
+                    key={info.label}
+                >
                     <div className="px-2 text-secondary">
                         <FaRegCheckCircle />
                     </div>
