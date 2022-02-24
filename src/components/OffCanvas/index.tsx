@@ -79,7 +79,7 @@ const OffCanvas: React.FC = () => (
                 <FaTicketAlt /> Cupons e Descontos
             </Link>
             <Link
-                to="/"
+                to="/espacos-para-eventos"
                 className="fs-5 py-3 border-bottom text-decoration-none"
             >
                 <GiMicrophone /> Espaços para eventos

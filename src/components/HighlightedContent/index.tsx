@@ -55,7 +55,7 @@ const HighlightedContent: React.FC = () => (
             <HighlightedCard
                 title="Espaços para Eventos"
                 description="Locais para fazer suas festas ou reuniões"
-                url=""
+                url="/espacos-para-eventos"
                 icon={GiMicrophone}
             />
             <HighlightedCard
