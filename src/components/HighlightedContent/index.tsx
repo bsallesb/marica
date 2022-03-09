@@ -15,7 +15,7 @@ import HighlightedCard from '../HighlightedCard';
 
 const HighlightedContent: React.FC = () => (
     <Section className="align-self-stretch pb-5">
-        <div className="row row-cols-3 justify-content-center gy-4">
+        <div className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 justify-content-center gy-4">
             <HighlightedCard
                 title="Pontos Turísticos"
                 description="Conheça nossas praias, lagoas, grutas e outros pontos turísticos"
@@ -49,7 +49,7 @@ const HighlightedContent: React.FC = () => (
             <HighlightedCard
                 title="Cupons de Desconto"
                 description="As melhores promoções para curtir a cidade"
-                url=""
+                url="/descontos"
                 icon={FaTicketAlt}
             />
             <HighlightedCard
@@ -61,7 +61,7 @@ const HighlightedContent: React.FC = () => (
             <HighlightedCard
                 title="Eventos"
                 description="Confira o calendário de eventos da cidade"
-                url=""
+                url="/eventos"
                 icon={BsCalendarDayFill}
             />
             <HighlightedCard

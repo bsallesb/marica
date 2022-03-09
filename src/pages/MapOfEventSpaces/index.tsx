@@ -5,7 +5,7 @@ import Wrapper from '../../components/Wrapper';
 import { useEventSpaces } from '../../hooks/EventSpace';
 
 export const MapOfEventSpaces: React.FC = () => {
-    const { eventSpaces, getEventSpaces } = useEventSpaces();
+    const { eventSpaces, getEventSpaces, setCategory } = useEventSpaces();
 
     useEffect(() => {
         getEventSpaces();
@@ -20,6 +20,7 @@ export const MapOfEventSpaces: React.FC = () => {
                     items={eventSpaces}
                     url="/espacos-para-eventos"
                     backTo="Espaços e Eventos"
+                    setCategory={setCategory}
                 />
             )}
         </Wrapper>

@@ -1,30 +1,67 @@
 import GoogleMapReact from 'google-map-react';
+import { useState } from 'react';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { ImLocation2 } from 'react-icons/im';
+import { CategoryType } from '../../@types/Category';
 import { HotelType } from '../../@types/Hotel';
 import { RestaurantType } from '../../@types/Restaurant';
 
 import { SpotType } from '../../@types/Spot';
-import { LocationPoint, Title } from './styles';
+import Card from '../Card';
+import { CardMarker, LocationPoint, Title, Wrapper } from './styles';
 
 interface IframeMapProps {
     items: SpotType[] | HotelType[] | RestaurantType[];
     url: string;
     backTo: string;
+    setCategory: (category: CategoryType) => void;
 }
 
 interface IAnyReactComponentProps {
     lat: number;
     lng: number;
+    item: SpotType | HotelType | RestaurantType;
+    setCategory: (category: CategoryType) => void;
+    showCard: boolean;
+    onPinClick: () => void;
 }
 
-const MapMarker: React.FC<IAnyReactComponentProps> = () => (
-    <LocationPoint>
-        <ImLocation2 color="red" className="fs-2" />
-    </LocationPoint>
-);
+const MapMarker: React.FC<IAnyReactComponentProps> = ({
+    item,
+    setCategory,
+    showCard,
+    onPinClick,
+}) => {
+    return (
+        <Wrapper>
+            {showCard && (
+                <CardMarker>
+                    <Card
+                        setCategory={setCategory}
+                        key={item.id}
+                        nome={item.nome}
+                        addresses={item.enderecos}
+                        image={item.capa}
+                        url={`/eventos/${item.id}`}
+                        categories={item.categorias}
+                        path="eventos"
+                    />
+                </CardMarker>
+            )}
+            <LocationPoint type="button" onClick={onPinClick}>
+                <ImLocation2 color="red" className="fs-2" />
+            </LocationPoint>
+        </Wrapper>
+    );
+};
 
-const IframeBigMap: React.FC<IframeMapProps> = ({ items, url, backTo }) => {
+const IframeBigMap: React.FC<IframeMapProps> = ({
+    items,
+    url,
+    backTo,
+    setCategory,
+}) => {
+    const [activeAddress, setActiveAddress] = useState<number | null>(null);
     return (
         <div>
             <Title
@@ -45,15 +82,28 @@ const IframeBigMap: React.FC<IframeMapProps> = ({ items, url, backTo }) => {
                         lat: -22.92016437953923713166659581474959850311279296875,
                         lng: -42.81936358437220491168773151002824306488037109375,
                     }}
+                    onClick={() => setActiveAddress(null)}
                 >
                     {items?.map(item =>
-                        item?.enderecos?.map(address => (
-                            <MapMarker
-                                lat={address.lat}
-                                lng={address.lng}
-                                key={address.id}
-                            />
-                        ))
+                        item?.enderecos?.map(address => {
+                            return (
+                                <MapMarker
+                                    lat={address.lat}
+                                    lng={address.lng}
+                                    key={address.id}
+                                    item={item}
+                                    setCategory={setCategory}
+                                    showCard={address.id === activeAddress}
+                                    onPinClick={() =>
+                                        setActiveAddress(
+                                            address.id === activeAddress
+                                                ? null
+                                                : address.id
+                                        )
+                                    }
+                                />
+                            );
+                        })
                     )}
                 </GoogleMapReact>
             </div>

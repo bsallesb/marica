@@ -1,6 +1,7 @@
 import { HiHome } from 'react-icons/hi';
 
 import { AreaType } from '../../@types/Area';
+import { Pluralize } from '../../utils/pluralize';
 
 interface IEquipmentsProps {
     title: string;
@@ -44,7 +45,12 @@ const Areas: React.FC<IEquipmentsProps> = ({ title, areas }) => (
                         )}
                         {area.capacidade && (
                             <h2 className="px-2 fs-6 m-0 pt-2 text-muted fst-italic">
-                                Capacidade: {area.capacidade} pessoas
+                                Capacidade: {area.capacidade}{' '}
+                                {Pluralize(
+                                    'pessoa',
+                                    'pessoas',
+                                    area.capacidade
+                                )}
                             </h2>
                         )}
                     </div>

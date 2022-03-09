@@ -2,24 +2,24 @@ import { useEffect } from 'react';
 import Header from '../../components/Header';
 import IframeBigMap from '../../components/IframeBigMap';
 import Wrapper from '../../components/Wrapper';
-import { useBusinesses } from '../../hooks/Business';
+import { useEvents } from '../../hooks/Event';
 
-export const MapOfBusinesses: React.FC = () => {
-    const { businesses, getBusinesses, setCategory } = useBusinesses();
+export const MapOfEvents: React.FC = () => {
+    const { events, getEvents, setCategory } = useEvents();
 
     useEffect(() => {
-        getBusinesses();
+        getEvents();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
         <Wrapper>
             <Header />
-            {businesses && (
+            {events && (
                 <IframeBigMap
-                    items={businesses}
-                    url="/comercio-local"
-                    backTo="Comércio local"
+                    items={events}
+                    url="/eventos"
+                    backTo="Eventos"
                     setCategory={setCategory}
                 />
             )}

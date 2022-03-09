@@ -6,82 +6,91 @@ import {
     useMemo,
 } from 'react';
 import { CategoryType } from '../@types/Category';
-import { RestaurantType } from '../@types/Restaurant';
+import { EventType } from '../@types/Event';
 import Api from '../services/Api';
 
 // Aqui é definida a Interface com os tipos de dados de tudo que será disponibilizado "para fora" do Provider
-interface RestaurantContextData {
-    restaurant: RestaurantType | null;
-    restaurants: RestaurantType[];
+interface EventContextData {
+    event: EventType | null;
+    events: EventType[];
     category: CategoryType | null;
     categories: CategoryType[];
     isLoading: boolean;
     setCategory: (category: CategoryType) => void;
-    getRestaurants: (text?: string) => Promise<void>;
-    getRestaurant: (id: number) => Promise<void>;
-    getRestaurantsByCategory: (id: number) => Promise<void>;
+    getEvents: (text?: string) => Promise<void>;
+    getEvent: (id: number) => Promise<void>;
+    getEventsByCategory: (id: number) => Promise<void>;
     getCategories: (id: number) => Promise<void>;
 }
 
 // Aqui é definido o Context (não precisa entender, é sempre exatamente assim)
-export const RestaurantsContext = createContext<RestaurantContextData>(
-    {} as RestaurantContextData
+export const EventsContext = createContext<EventContextData>(
+    {} as EventContextData
 );
 
 // O useBanners() é o que você vai chamar dentro dos componentes pra acessar o conteúdo interno do Provider. Exemplo:
 /*
     const { banners, getBanners } = useBanners();
 */
-export const useRestaurants = (): RestaurantContextData => {
-    const context = useContext(RestaurantsContext);
+export const useEvents = (): EventContextData => {
+    const context = useContext(EventsContext);
 
     if (!context) {
-        throw new Error('useRestaurants must be within RestaurantsProvider');
+        throw new Error('useEvents must be within EventsProvider');
     }
 
     return context;
 };
 
 // Aqui são definidas as variáveis de State e as funções do Provider
-export const RestaurantsProvider: React.FC = ({ children }) => {
-    const [restaurants, setRestaurants] = useState<RestaurantType[]>([]);
-    const [restaurant, setRestaurant] = useState<RestaurantType | null>(null);
+export const EventsProvider: React.FC = ({ children }) => {
+    const [events, setEvents] = useState<EventType[]>([]);
+    const [event, setEvent] = useState<EventType | null>(null);
     const [categories, setCategories] = useState<CategoryType[]>([]);
     const [category, setCategory] = useState<CategoryType | null>(null);
     const [isLoading, setLoading] = useState(true);
 
-    const getRestaurants = useCallback(
-        async (searchText = ''): Promise<void> => {
-            let url = '/restaurantes';
+    const getEvents = useCallback(async (searchText = ''): Promise<void> => {
+        let url = '/eventos';
 
-            setLoading(true);
-
-            if (searchText.length > 0) {
-                url += `/busca?busca=${searchText}`;
-            }
-
-            Api.get(url, { params: { fileds: 'is_delivery' } })
-                .then(response => {
-                    setRestaurants(response.data.collection);
-                    if (response.data.categorias) {
-                        setCategories(response.data.categorias);
-                    }
-                })
-                .catch(() => {
-                    setRestaurants([]);
-                    setCategories([]);
-                })
-                .finally(() => setLoading(false));
-        },
-        []
-    );
-
-    const getRestaurantsByCategory = useCallback(async (id): Promise<void> => {
         setLoading(true);
 
-        Api.get(`restaurantes/categorias/${id}`)
+        if (searchText.length > 0) {
+            url += `/busca?busca=${searchText}`;
+        }
+
+        Api.get(url, {
+            params: {
+                fields: 'datahora_inicio',
+                orderby: 'datahora_inicio',
+                order: 'asc',
+            },
+        })
             .then(response => {
-                setRestaurants(response.data.collection);
+                setEvents(response.data.collection);
+                if (response.data.categorias) {
+                    setCategories(response.data.categorias);
+                }
+            })
+            .catch(() => {
+                setEvents([]);
+                setCategories([]);
+            })
+            .finally(() => setLoading(false));
+    }, []);
+
+    const getEventsByCategory = useCallback(async (id): Promise<void> => {
+        setLoading(true);
+
+        Api.get(`eventos/categorias/${id}`, {
+            params: {
+                fields: 'datahora_inicio',
+                orderby: 'datahora_inicio',
+                order: 'asc',
+            },
+        })
+            .then(response => {
+                setEvents(response.data.collection);
             })
             .catch()
             .finally(() => {
@@ -89,13 +98,13 @@ export const RestaurantsProvider: React.FC = ({ children }) => {
             });
     }, []);
 
-    const getRestaurant = useCallback(async (id: number): Promise<void> => {
-        setRestaurant(null);
+    const getEvent = useCallback(async (id: number): Promise<void> => {
+        setEvent(null);
         setLoading(true);
 
-        Api.get(`/restaurantes/${id}`)
+        Api.get(`/eventos/${id}`)
             .then(response => {
-                setRestaurant(response.data.item ?? null);
+                setEvent(response.data.item ?? null);
             })
             .catch()
             .finally(() => {
@@ -104,7 +113,7 @@ export const RestaurantsProvider: React.FC = ({ children }) => {
     }, []);
 
     const getCategories = useCallback(async (id): Promise<void> => {
-        Api.get(`/restaurantes/categorias`)
+        Api.get(`/eventos/categorias`)
             .then(response => {
                 const categoriesResponse =
                     (response.data?.categorias as CategoryType[]) ??
@@ -124,34 +133,34 @@ export const RestaurantsProvider: React.FC = ({ children }) => {
     // Aqui são definidas quais informações estarão disponíveis "para fora" do Provider
     const providerValue = useMemo(
         () => ({
-            restaurant,
-            restaurants,
+            event,
+            events,
             category,
             categories,
             isLoading,
             setCategory,
-            getRestaurants,
-            getRestaurant,
-            getRestaurantsByCategory,
+            getEvents,
+            getEvent,
+            getEventsByCategory,
             getCategories,
         }),
         [
-            restaurants,
+            events,
             category,
             categories,
             isLoading,
-            restaurant,
+            event,
             setCategory,
-            getRestaurants,
-            getRestaurant,
-            getRestaurantsByCategory,
+            getEvents,
+            getEvent,
+            getEventsByCategory,
             getCategories,
         ]
     );
 
     return (
-        <RestaurantsContext.Provider value={providerValue}>
+        <EventsContext.Provider value={providerValue}>
             {children}
-        </RestaurantsContext.Provider>
+        </EventsContext.Provider>
     );
 };

@@ -5,7 +5,7 @@ import Wrapper from '../../components/Wrapper';
 import { useSpots } from '../../hooks/TouristSpot';
 
 export const MapOfSpots: React.FC = () => {
-    const { spots, getSpots } = useSpots();
+    const { setCategory, spots, getSpots } = useSpots();
 
     useEffect(() => {
         getSpots();
@@ -20,6 +20,7 @@ export const MapOfSpots: React.FC = () => {
                     items={spots}
                     url="/pontos-turisticos"
                     backTo="Pontos Turísticos"
+                    setCategory={setCategory}
                 />
             )}
         </Wrapper>

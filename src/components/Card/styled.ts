@@ -27,4 +27,5 @@ export const Cover = styled.div`
     height: 250px;
     background-size: cover;
     border-radius: 5px 5px 0px 0px;
+    background-position: center center;
 `;

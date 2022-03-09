@@ -30,6 +30,11 @@ import { EventSpacesProvider } from './hooks/EventSpace';
 import EventSpace from './pages/EventSpace';
 import { MapOfEventSpaces } from './pages/MapOfEventSpaces';
 import { EventSpaceCategory } from './pages/EventSpaceCategory';
+import { EventsProvider } from './hooks/Event';
+import { Events } from './pages/Events';
+import Event from './pages/Event';
+import { EventCategory } from './pages/EventCategory';
+import { MapOfEvents } from './pages/MapOfEvents';
 
 export const Routes: React.FC = () => (
     <>
@@ -40,102 +45,132 @@ export const Routes: React.FC = () => (
                         <AboutProvider>
                             <BusinessesProvider>
                                 <EventSpacesProvider>
-                                    <BrowserRouter>
-                                        <Switch>
-                                            <Route
-                                                path="/"
-                                                element={<Home />}
-                                            />
-                                            <Route
-                                                path="/pontos-turisticos"
-                                                element={<TouristSpots />}
-                                            />
-                                            <Route
-                                                path="/pontos-turisticos/categorias/:id/:label"
-                                                element={<SpotCategory />}
-                                            />
-                                            <Route
-                                                path="/pontos-turisticos/:id"
-                                                element={<TouristSpot />}
-                                            />
-                                            <Route
-                                                path="/sobre-a-cidade"
-                                                element={<AboutMarica />}
-                                            />
-                                            <Route
-                                                path="/pontos-turisticos/mapa"
-                                                element={<MapOfSpots />}
-                                            />
-                                            <Route
-                                                path="/hoteis-e-pousadas"
-                                                element={<Hotels />}
-                                            />
-                                            <Route
-                                                path="/hoteis-e-pousadas/categorias/:id/:label"
-                                                element={<HotelCategory />}
-                                            />
-                                            <Route
-                                                path="/hoteis-e-pousadas/:id"
-                                                element={<Hotel />}
-                                            />
-                                            <Route
-                                                path="/hoteis-e-pousadas/mapa"
-                                                element={<MapOfHotels />}
-                                            />
-                                            <Route
-                                                path="/bares-e-restaurantes"
-                                                element={<Restaurants />}
-                                            />
-                                            <Route
-                                                path="/bares-e-restaurantes/categorias/:id/:label"
-                                                element={<RestaurantCategory />}
-                                            />
-                                            <Route
-                                                path="/bares-e-restaurantes/:id"
-                                                element={<Restaurant />}
-                                            />
-                                            <Route
-                                                path="/bares-e-restaurantes/mapa"
-                                                element={<MapOfRestaurants />}
-                                            />
-                                            <Route
-                                                path="/delivery"
-                                                element={<Delivery />}
-                                            />
-                                            <Route
-                                                path="/comercio-local"
-                                                element={<Businesses />}
-                                            />
-                                            <Route
-                                                path="/comercio-local/:id"
-                                                element={<Business />}
-                                            />
-                                            <Route
-                                                path="/comercio-local/categorias/:id/:label"
-                                                element={<BusinessCategory />}
-                                            />
-                                            <Route
-                                                path="/comercio-local/mapa"
-                                                element={<MapOfBusinesses />}
-                                            />
-                                            <Route
-                                                path="/espacos-para-eventos"
-                                                element={<EventSpaces />}
-                                            />
-                                            <Route
-                                                path="/espacos-para-eventos/:id"
-                                                element={<EventSpace />}
-                                            />
-                                            <Route
-                                                path="/espacos-para-eventos/mapa"
-                                                element={<MapOfEventSpaces />}
-                                            />
-                                            <Route
-                                                path="/espacos-para-eventos/categorias/:id/:label"
-                                                element={<EventSpaceCategory />}
-                                            />
-                                        </Switch>
-                                    </BrowserRouter>
+                                    <EventsProvider>
+                                        <BrowserRouter>
+                                            <Switch>
+                                                <Route
+                                                    path="/"
+                                                    element={<Home />}
+                                                />
+                                                <Route
+                                                    path="/pontos-turisticos"
+                                                    element={<TouristSpots />}
+                                                />
+                                                <Route
+                                                    path="/pontos-turisticos/categorias/:id/:label"
+                                                    element={<SpotCategory />}
+                                                />
+                                                <Route
+                                                    path="/pontos-turisticos/:id"
+                                                    element={<TouristSpot />}
+                                                />
+                                                <Route
+                                                    path="/sobre-a-cidade"
+                                                    element={<AboutMarica />}
+                                                />
+                                                <Route
+                                                    path="/pontos-turisticos/mapa"
+                                                    element={<MapOfSpots />}
+                                                />
+                                                <Route
+                                                    path="/hoteis-e-pousadas"
+                                                    element={<Hotels />}
+                                                />
+                                                <Route
+                                                    path="/hoteis-e-pousadas/categorias/:id/:label"
+                                                    element={<HotelCategory />}
+                                                />
+                                                <Route
+                                                    path="/hoteis-e-pousadas/:id"
+                                                    element={<Hotel />}
+                                                />
+                                                <Route
+                                                    path="/hoteis-e-pousadas/mapa"
+                                                    element={<MapOfHotels />}
+                                                />
+                                                <Route
+                                                    path="/bares-e-restaurantes"
+                                                    element={<Restaurants />}
+                                                />
+                                                <Route
+                                                    path="/bares-e-restaurantes/categorias/:id/:label"
+                                                    element={
+                                                        <RestaurantCategory />
+                                                    }
+                                                />
+                                                <Route
+                                                    path="/bares-e-restaurantes/:id"
+                                                    element={<Restaurant />}
+                                                />
+                                                <Route
+                                                    path="/bares-e-restaurantes/mapa"
+                                                    element={
+                                                        <MapOfRestaurants />
+                                                    }
+                                                />
+                                                <Route
+                                                    path="/delivery"
+                                                    element={<Delivery />}
+                                                />
+                                                <Route
+                                                    path="/comercio-local"
+                                                    element={<Businesses />}
+                                                />
+                                                <Route
+                                                    path="/comercio-local/:id"
+                                                    element={<Business />}
+                                                />
+                                                <Route
+                                                    path="/comercio-local/categorias/:id/:label"
+                                                    element={
+                                                        <BusinessCategory />
+                                                    }
+                                                />
+                                                <Route
+                                                    path="/comercio-local/mapa"
+                                                    element={
+                                                        <MapOfBusinesses />
+                                                    }
+                                                />
+                                                <Route
+                                                    path="/espacos-para-eventos"
+                                                    element={<EventSpaces />}
+                                                />
+                                                <Route
+                                                    path="/espacos-para-eventos/:id"
+                                                    element={<EventSpace />}
+                                                />
+                                                <Route
+                                                    path="/espacos-para-eventos/mapa"
+                                                    element={
+                                                        <MapOfEventSpaces />
+                                                    }
+                                                />
+                                                <Route
+                                                    path="/espacos-para-eventos/categorias/:id/:label"
+                                                    element={
+                                                        <EventSpaceCategory />
+                                                    }
+                                                />
+                                                <Route
+                                                    path="/eventos"
+                                                    element={<Events />}
+                                                />
+                                                <Route
+                                                    path="/eventos/:id"
+                                                    element={<Event />}
+                                                />
+                                                <Route
+                                                    path="/eventos/categorias/:id/:label"
+                                                    element={<EventCategory />}
+                                                />
+                                                <Route
+                                                    path="/eventos/mapa"
+                                                    element={<MapOfEvents />}
+                                                />
+                                            </Switch>
+                                        </BrowserRouter>
+                                    </EventsProvider>
                                 </EventSpacesProvider>
                             </BusinessesProvider>
                         </AboutProvider>

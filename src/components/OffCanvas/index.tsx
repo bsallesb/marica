@@ -67,13 +67,13 @@ const OffCanvas: React.FC = () => (
                 <FaMotorcycle /> Delivery
             </Link>
             <Link
-                to="/"
+                to="/comercio-local"
                 className="fs-5 py-3 border-bottom text-decoration-none"
             >
                 <MdStore /> Comércio Local
             </Link>
             <Link
-                to="/"
+                to="/descontos"
                 className="fs-5 py-3 border-bottom text-decoration-none"
             >
                 <FaTicketAlt /> Cupons e Descontos
@@ -85,7 +85,7 @@ const OffCanvas: React.FC = () => (
                 <GiMicrophone /> Espaços para eventos
             </Link>
             <Link
-                to="/"
+                to="/eventos"
                 className="fs-5 py-3 border-bottom text-decoration-none"
             >
                 <BsCalendarDayFill /> Eventos

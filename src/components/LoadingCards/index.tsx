@@ -10,7 +10,7 @@ const LoadingCards: React.FC<ILoadingCardsProps> = ({
     numberOfCards = 12,
 }) =>
     show ? (
-        <div className="row row-cols-3 g-4">
+        <div className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-4">
             {[...Array(numberOfCards)].map((item, i) => (
                 // eslint-disable-next-line react/no-array-index-key
                 <div key={i} className="col">

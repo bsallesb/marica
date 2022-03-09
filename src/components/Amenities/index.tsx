@@ -53,7 +53,7 @@ const InformationsSpot: React.FC<IInformationsProps> = ({
                     </div>
                     <div>
                         <h2 className="px-2 fs-6 m-0">
-                            {Pluralize('leitos', 'leitos', beds)}
+                            {Pluralize('leito', 'leitos', beds)}
                         </h2>
                     </div>
                 </li>

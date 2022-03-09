@@ -5,7 +5,7 @@ import Wrapper from '../../components/Wrapper';
 import { useRestaurants } from '../../hooks/Restaurant';
 
 export const MapOfRestaurants: React.FC = () => {
-    const { restaurants, getRestaurants } = useRestaurants();
+    const { restaurants, getRestaurants, setCategory } = useRestaurants();
 
     useEffect(() => {
         getRestaurants();
@@ -20,6 +20,7 @@ export const MapOfRestaurants: React.FC = () => {
                     items={restaurants}
                     url="/bares-e-restaurantes"
                     backTo="Bares e Restaurantes"
+                    setCategory={setCategory}
                 />
             )}
         </Wrapper>

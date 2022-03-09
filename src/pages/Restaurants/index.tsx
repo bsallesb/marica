@@ -32,11 +32,11 @@ export const Restaurants: React.FC = () => {
         <Wrapper>
             <Header />
             <Container>
-                <div className="row align-items-center mt-3 mb-4">
-                    <div className="col col-5 col-lg-6">
+                <div className="flex-column flex-sm-column flex-md-column d-lg-flex flex-lg-row align-items-center mt-3 mb-4">
+                    <div className="col">
                         <PageTitle title="Bares e Restaurantes" />
                     </div>
-                    <div className="d-flex col col-7 col-lg-6 m-0">
+                    <div className="d-flex col m-0 my-3">
                         <Map url="/bares-e-restaurantes/mapa" />
                         <SearchBar
                             placeholder="Buscar Bares e Restaurantes"
@@ -61,7 +61,7 @@ export const Restaurants: React.FC = () => {
                         size="md"
                     />
                     <div className="align-self-stretch pb-5 mt-3">
-                        <div className="row row-cols-3 gy-4">
+                        <div className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 gy-4">
                             {restaurants.map(restaurant => (
                                 <Card
                                     setCategory={setCategory}

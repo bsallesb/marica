@@ -19,3 +19,7 @@ export const MainHeader = styled.div`
         margin-right: 10px;
     }
 `;
+
+export const Wrapper = styled.div`
+    min-width: 30px;
+`;

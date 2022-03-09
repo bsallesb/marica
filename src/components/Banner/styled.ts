@@ -6,11 +6,6 @@ export const BannerSection = styled.div`
     position: relative;
     overflow: hidden;
 
-    h1 {
-        font-size: 65px;
-        font-weight: bold;
-    }
-
     h2 {
         font-size: 20px;
     }
@@ -30,4 +25,14 @@ export const Background = styled.section`
     height: 0px;
     width: 500px;
     z-index: 0;
+`;
+
+export const SmallTitle = styled.h1`
+    font-size: 30px;
+    font-weight: bold;
+`;
+
+export const LargeTitle = styled.h1`
+    font-size: 65px;
+    font-weight: bold;
 `;
