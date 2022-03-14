@@ -46,8 +46,8 @@ const Event: React.FC = () => {
                     waitFor={isLoading === false}
                     meanWile={<LoadingInfo />}
                 >
-                    <div className="row mb-5">
-                        <div className="col-8">
+                    <div className="flex-column flex-sm-column flex-md-column d-lg-flex flex-lg-row mb-5">
+                        <div className="col col-lg-8">
                             {event && (
                                 <>
                                     <div className="mb-3">
@@ -117,7 +117,7 @@ const Event: React.FC = () => {
                                 </>
                             )}
                         </div>
-                        <div className="col-4">
+                        <div className="col col-lg-4">
                             {event && (
                                 <IframeSmallMap address={event?.addresses} />
                             )}

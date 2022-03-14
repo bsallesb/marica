@@ -46,8 +46,8 @@ const Hotel: React.FC = () => {
                     waitFor={isLoading === false}
                     meanWile={<LoadingInfo />}
                 >
-                    <div className="row mb-5">
-                        <div className="col-8">
+                    <div className="flex-column flex-sm-column flex-md-column d-lg-flex flex-lg-row mb-5">
+                        <div className="col col-lg-8">
                             {hotel && (
                                 <>
                                     <div className="mb-3">
@@ -124,7 +124,7 @@ const Hotel: React.FC = () => {
                                 </>
                             )}
                         </div>
-                        <div className="col-4">
+                        <div className="col col-lg-4">
                             {hotel && (
                                 <IframeSmallMap address={hotel?.addresses} />
                             )}

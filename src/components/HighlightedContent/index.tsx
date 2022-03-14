@@ -13,6 +13,9 @@ import { BsCalendarDayFill } from 'react-icons/bs';
 import { Section } from './styled';
 import HighlightedCard from '../HighlightedCard';
 
+const routesURL = process.env.REACT_APP_CRAFTSMANSHIP ?? '';
+const craftmansshipURL = process.env.REACT_APP_CRAFTSMANSHIP ?? '';
+
 const HighlightedContent: React.FC = () => (
     <Section className="align-self-stretch pb-5">
         <div className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 justify-content-center gy-4">
@@ -67,13 +70,13 @@ const HighlightedContent: React.FC = () => (
             <HighlightedCard
                 title="Roteiros Turisticos"
                 description="Conheça diversas trilhas ecológicas e de aventura, com variados níveis de dificuldade"
-                url=""
+                url={routesURL}
                 icon={FaRoute}
             />
             <HighlightedCard
                 title="Artesanato"
                 description="Conheça e compre as criações dos artesãos de Maricá/RJ"
-                url=""
+                url={craftmansshipURL}
                 icon={GiFlowerPot}
             />
             <HighlightedCard

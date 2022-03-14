@@ -24,4 +24,9 @@ export const MaricaBackground = styled.div`
 
 export const Card = styled.div`
     margin-top: -150px;
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
 `;

@@ -9,9 +9,11 @@ import { Card, MaricaBackground } from './styles';
 import PageTitle from '../../components/PageTitle';
 import Container from '../../components/Container';
 import { useAbout } from '../../hooks/About';
+import LoadingGate from '../../components/LoadingGate';
+import LoadingAbout from '../../components/LoadingAbout';
 
 export const AboutMarica: React.FC = () => {
-    const { about, getAbout } = useAbout();
+    const { about, getAbout, isLoading } = useAbout();
 
     useEffect(() => {
         getAbout();
@@ -30,6 +32,10 @@ export const AboutMarica: React.FC = () => {
                 <Card className="card p-4 shadow-sm">
                     <div className="p-4">
                         <PageTitle title="Conheça Maricá" />
+                        <LoadingGate
+                            waitFor={isLoading === false}
+                            meanWile={<LoadingAbout />}
+                        />
                         <div
                             style={{
                                 whiteSpace: 'pre-wrap',

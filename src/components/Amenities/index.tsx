@@ -33,7 +33,7 @@ const InformationsSpot: React.FC<IInformationsProps> = ({
         <h1 className="fs-4 fw-bold border-bottom pb-2 border-2 mb-4">
             {title}
         </h1>
-        <ul className="align-items-center p-0 row row-cols-3 pb-3">
+        <ul className="align-items-center p-0 row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 pb-3">
             {rooms && (
                 <li className="d-flex align-items-center list-unstyled col pb-4">
                     <div className="px-2 text-secondary">

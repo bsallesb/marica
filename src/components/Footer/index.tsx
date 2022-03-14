@@ -1,5 +1,4 @@
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 
 import { MainFooter } from './styled';
 import Logo from '../../assets/marica-logo.png';

@@ -13,6 +13,9 @@ import { FiInfo } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { SectionOffcanvas } from './styled';
 
+const routesURL = process.env.REACT_APP_CRAFTSMANSHIP ?? '';
+const craftmansshipURL = process.env.REACT_APP_CRAFTSMANSHIP ?? '';
+
 const OffCanvas: React.FC = () => (
     <SectionOffcanvas
         className="offcanvas offcanvas-start"
@@ -90,18 +93,22 @@ const OffCanvas: React.FC = () => (
             >
                 <BsCalendarDayFill /> Eventos
             </Link>
-            <Link
-                to="/"
+            <a
+                href={routesURL}
+                target="_blank"
+                rel="noreferrer"
                 className="fs-5 py-3 border-bottom text-decoration-none"
             >
                 <FaRoute /> Roteiros Turísticos
-            </Link>
-            <Link
-                to="/"
+            </a>
+            <a
+                href={craftmansshipURL}
+                target="_blank"
+                rel="noreferrer"
                 className="fs-5 py-3 border-bottom text-decoration-none"
             >
                 <GiFlowerPot /> Artesanato
-            </Link>
+            </a>
         </div>
     </SectionOffcanvas>
 );

@@ -2,6 +2,7 @@ import slugify from 'react-slugify';
 
 import { CategoryType } from '../../@types/Category';
 import Pill from '../Pill';
+import { Wrapper } from './styles';
 
 interface IPillsProps {
     categories: CategoryType[];
@@ -18,20 +19,22 @@ const Pills: React.FC<IPillsProps> = ({
     size = 'sm',
     setCategory,
 }) => (
-    <ul className="d-flex list-unstyled flex-wrap p-0">
-        {categories.map(category => (
-            <li className="me-2 mb-2" key={category.id}>
-                <Pill
-                    onClick={() => setCategory(category)}
-                    url={`${url}/${category.id}/${slugify(category.label)}`}
-                    color={color}
-                    size={size}
-                >
-                    {category.label}
-                </Pill>
-            </li>
-        ))}
-    </ul>
+    <Wrapper>
+        <ul className="d-flex list-unstyled overflow-x overflow-sm-x flex-md-wrap p-0">
+            {categories.map(category => (
+                <li className="me-2 mb-2" key={category.id}>
+                    <Pill
+                        onClick={() => setCategory(category)}
+                        url={`${url}/${category.id}/${slugify(category.label)}`}
+                        color={color}
+                        size={size}
+                    >
+                        {category.label}
+                    </Pill>
+                </li>
+            ))}
+        </ul>
+    </Wrapper>
 );
 
 export default Pills;
