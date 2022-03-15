@@ -37,7 +37,7 @@ export const BusinessCategory: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        setTitle(`${category?.label ?? 'Loading...'} | "Categoria"`);
+        setTitle(`${category?.label ?? 'Loading...'} | Comércio Local`);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [category]);
 

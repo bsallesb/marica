@@ -37,7 +37,7 @@ export const EventSpaceCategory: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        setTitle(`${category?.label ?? 'Loading...'} | "Categoria"`);
+        setTitle(`${category?.label ?? 'Loading...'} | Espaços para Eventos`);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [category]);
 

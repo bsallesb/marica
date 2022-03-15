@@ -31,7 +31,7 @@ const Hotel: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        setTitle(`${hotel?.nome ?? 'Loading...'} | "Espaço"`);
+        setTitle(`${hotel?.nome ?? 'Loading...'} | Hotéis e Pousadas`);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [hotel]);
 

@@ -37,7 +37,7 @@ export const HotelCategory: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        setTitle(`${category?.label ?? 'Loading...'} | "Categoria"`);
+        setTitle(`${category?.label ?? 'Loading...'} | Hotéis e Pousadas`);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [category]);
 

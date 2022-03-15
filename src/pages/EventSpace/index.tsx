@@ -33,7 +33,7 @@ const EventSpace: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        setTitle(`${eventSpace?.nome ?? 'Loading...'} | "Ponto"`);
+        setTitle(`${eventSpace?.nome ?? 'Loading...'} | Espaços para Eventos`);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [eventSpace]);
 

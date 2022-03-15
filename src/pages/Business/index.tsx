@@ -30,7 +30,7 @@ const Business: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        setTitle(`${business?.nome ?? 'Loading...'} | "Comércio"`);
+        setTitle(`${business?.nome ?? 'Loading...'} | Comércio Local`);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [business]);
 

@@ -1,6 +1,6 @@
 import Slider from 'react-slick';
 import { ImageType } from '../../@types/Image';
-import { Cover } from './styled';
+import { Cover, Wrapper } from './styled';
 
 interface ISpotSliderProps {
     images: ImageType[];
@@ -32,7 +32,7 @@ const responsive = [
 ];
 
 const SpotSlider: React.FC<ISpotSliderProps> = ({ images }) => (
-    <div>
+    <Wrapper>
         {images.length > 3 ? (
             <Slider
                 className="mb-4"
@@ -48,7 +48,7 @@ const SpotSlider: React.FC<ISpotSliderProps> = ({ images }) => (
                 pauseOnHover
             >
                 {images.map(image => (
-                    <div key={image.id}>
+                    <div key={image.id} className="w-100">
                         <Cover
                             style={{ backgroundImage: `url(${image.src})` }}
                         />
@@ -69,7 +69,7 @@ const SpotSlider: React.FC<ISpotSliderProps> = ({ images }) => (
                 ))}
             </div>
         )}
-    </div>
+    </Wrapper>
 );
 
 export default SpotSlider;

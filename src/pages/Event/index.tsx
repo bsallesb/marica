@@ -31,7 +31,7 @@ const Event: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        setTitle(`${event?.nome ?? 'Loading...'} | "Evento"`);
+        setTitle(`${event?.nome ?? 'Loading...'} | Eventos`);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [event]);
 
