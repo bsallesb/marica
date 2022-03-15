@@ -13,12 +13,14 @@ import Wrapper from '../../components/Wrapper';
 import LoadingGate from '../../components/LoadingGate';
 import LoadingCards from '../../components/LoadingCards';
 import LoadingPills from '../../components/LoadingPills';
+import { setTitle } from '../../utils/title';
 
 export const TouristSpots: React.FC = () => {
     const { isLoading, spots, setCategory, categories, getSpots } = useSpots();
 
     useEffect(() => {
         getSpots();
+        setTitle('Pontos Turísticos');
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

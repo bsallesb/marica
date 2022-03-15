@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { AiOutlineMail } from 'react-icons/ai';
 import { BsGlobe2, BsTelephone } from 'react-icons/bs';
 import {
@@ -114,7 +115,7 @@ const AboutSpot: React.FC<IAboutSpotProps> = ({
                         {socialMedias.map(socialMedia => {
                             const Icon = icons[socialMedia.nome];
                             return (
-                                <>
+                                <Fragment key={socialMedia.nome}>
                                     <CheckIcon className="px-2 text-secondary fs-5">
                                         <CheckIcon>
                                             <Icon />
@@ -130,7 +131,7 @@ const AboutSpot: React.FC<IAboutSpotProps> = ({
                                             {socialMedia.user}
                                         </a>
                                     </h2>
-                                </>
+                                </Fragment>
                             );
                         })}
                     </li>
@@ -149,24 +150,24 @@ const AboutSpot: React.FC<IAboutSpotProps> = ({
                                     >
                                         {info.is24 ? (
                                             <div className="px-2">
-                                                <h2 className="px-2 fs-6 m-0">
+                                                <p className="px-2 fs-6 m-0">
                                                     Aberto 24 horas
-                                                </h2>
+                                                </p>
                                             </div>
                                         ) : (
                                             <div className="px-2 pt-1">
-                                                <h2 className="d-flex fs-6 m-0">
-                                                    <h3
+                                                <div className="d-flex fs-6 m-0">
+                                                    <h2
                                                         style={{ width: 102 }}
                                                         className="fw-bold fs-6 me-2"
                                                     >
                                                         {info.label}
-                                                    </h3>{' '}
-                                                    <h3 className="ps-3 fs-6 me-2">
+                                                    </h2>
+                                                    <p className="ps-3 fs-6 me-2">
                                                         {info.horario.abre} às{' '}
                                                         {info.horario.fecha}
-                                                    </h3>
-                                                </h2>
+                                                    </p>
+                                                </div>
                                             </div>
                                         )}
                                     </div>

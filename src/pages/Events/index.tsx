@@ -13,6 +13,7 @@ import Wrapper from '../../components/Wrapper';
 import LoadingGate from '../../components/LoadingGate';
 import LoadingCards from '../../components/LoadingCards';
 import LoadingPills from '../../components/LoadingPills';
+import { setTitle } from '../../utils/title';
 
 export const Events: React.FC = () => {
     const { isLoading, events, setCategory, categories, getEvents } =
@@ -20,6 +21,7 @@ export const Events: React.FC = () => {
 
     useEffect(() => {
         getEvents();
+        setTitle('Eventos');
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

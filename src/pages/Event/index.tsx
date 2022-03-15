@@ -18,6 +18,7 @@ import Pills from '../../components/Pills';
 import SpotSlider from '../../components/Slider';
 import Wrapper from '../../components/Wrapper';
 import { useEvents } from '../../hooks/Event';
+import { setTitle } from '../../utils/title';
 
 const Event: React.FC = () => {
     const { isLoading, event, setCategory, getEvent } = useEvents();
@@ -27,6 +28,11 @@ const Event: React.FC = () => {
         getEvent(parseInt(id ?? '', 10));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    useEffect(() => {
+        setTitle(`${event?.nome ?? 'Loading...'} | "Evento"`);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [event]);
 
     return (
         <Wrapper>

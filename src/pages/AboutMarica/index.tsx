@@ -11,12 +11,14 @@ import Container from '../../components/Container';
 import { useAbout } from '../../hooks/About';
 import LoadingGate from '../../components/LoadingGate';
 import LoadingAbout from '../../components/LoadingAbout';
+import { setTitle } from '../../utils/title';
 
 export const AboutMarica: React.FC = () => {
     const { about, getAbout, isLoading } = useAbout();
 
     useEffect(() => {
         getAbout();
+        setTitle('Sobre a cidade');
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

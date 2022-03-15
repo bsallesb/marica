@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import Container from '../../components/Container';
 import Banner from '../../components/Banner';
 import Footer from '../../components/Footer';
@@ -8,9 +10,15 @@ import Wrapper from '../../components/Wrapper';
 import LoadingGate from '../../components/LoadingGate';
 import LoadingBanner from '../../components/LoadingBanner';
 import { useBanners } from '../../hooks/Banners';
+import { setTitle } from '../../utils/title';
 
 export const Home: React.FC = () => {
     const { isLoading } = useBanners();
+
+    useEffect(() => {
+        setTitle();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <Wrapper>

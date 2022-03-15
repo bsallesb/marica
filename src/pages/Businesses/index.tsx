@@ -13,6 +13,7 @@ import Wrapper from '../../components/Wrapper';
 import LoadingGate from '../../components/LoadingGate';
 import LoadingCards from '../../components/LoadingCards';
 import LoadingPills from '../../components/LoadingPills';
+import { setTitle } from '../../utils/title';
 
 export const Businesses: React.FC = () => {
     const { isLoading, businesses, categories, setCategory, getBusinesses } =
@@ -20,6 +21,7 @@ export const Businesses: React.FC = () => {
 
     useEffect(() => {
         getBusinesses();
+        setTitle('Comércios');
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

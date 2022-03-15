@@ -54,7 +54,7 @@ const Carousel: React.FC = () => {
                                 >
                                     <img
                                         src={banner.image_l}
-                                        className="d-none d-sm-none d-md-block d-lg-none w-100"
+                                        className="d-none d-sm-none d-md-block d-lg-block w-100"
                                         alt="carrosel"
                                     />
                                     <img

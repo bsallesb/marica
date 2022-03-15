@@ -19,7 +19,7 @@ export const MapOfEventSpaces: React.FC = () => {
                 <IframeBigMap
                     items={eventSpaces}
                     url="/espacos-para-eventos"
-                    backTo="Espaços e Eventos"
+                    backTo="Espaços para Eventos"
                     setCategory={setCategory}
                 />
             )}

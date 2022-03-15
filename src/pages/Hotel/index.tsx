@@ -18,6 +18,7 @@ import Pills from '../../components/Pills';
 import SpotSlider from '../../components/Slider';
 import Wrapper from '../../components/Wrapper';
 import { useHotels } from '../../hooks/Hotel';
+import { setTitle } from '../../utils/title';
 
 const Hotel: React.FC = () => {
     const { isLoading, hotel, setCategory, getHotel } = useHotels();
@@ -27,6 +28,11 @@ const Hotel: React.FC = () => {
         getHotel(parseInt(id ?? '', 10));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    useEffect(() => {
+        setTitle(`${hotel?.nome ?? 'Loading...'} | "Espaço"`);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [hotel]);
 
     return (
         <Wrapper>

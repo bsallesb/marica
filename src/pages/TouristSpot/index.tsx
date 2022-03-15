@@ -19,6 +19,7 @@ import SpotTip from '../../components/SpotTip';
 import Travellers from '../../components/Travellers';
 import Wrapper from '../../components/Wrapper';
 import { useSpots } from '../../hooks/TouristSpot';
+import { setTitle } from '../../utils/title';
 
 const TouristSpot: React.FC = () => {
     const { isLoading, spot, setCategory, getSpot } = useSpots();
@@ -28,6 +29,11 @@ const TouristSpot: React.FC = () => {
         getSpot(parseInt(id ?? '', 10));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    useEffect(() => {
+        setTitle(`${spot?.nome ?? 'Loading...'} | Pontos Turisticos`);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [spot]);
 
     return (
         <Wrapper>

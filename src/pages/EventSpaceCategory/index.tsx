@@ -12,6 +12,7 @@ import PageTitle from '../../components/PageTitle';
 import Wrapper from '../../components/Wrapper';
 import LoadingGate from '../../components/LoadingGate';
 import LoadingCards from '../../components/LoadingCards';
+import { setTitle } from '../../utils/title';
 
 export const EventSpaceCategory: React.FC = () => {
     const {
@@ -33,6 +34,11 @@ export const EventSpaceCategory: React.FC = () => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    useEffect(() => {
+        setTitle(`${category?.label ?? 'Loading...'} | "Categoria"`);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [category]);
 
     const handleSearch = useCallback((searchText: string): void => {
         getEventSpaces(searchText);
@@ -63,22 +69,28 @@ export const EventSpaceCategory: React.FC = () => {
                     waitFor={isLoading === false}
                     meanWile={<LoadingCards show />}
                 >
-                    <div className="align-self-stretch pb-5 mt-3">
-                        <div className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 gy-4">
-                            {eventSpaces.map(eventSpace => (
-                                <Card
-                                    setCategory={setCategory}
-                                    key={eventSpace.id}
-                                    nome={eventSpace.nome}
-                                    addresses={eventSpace.enderecos}
-                                    image={eventSpace.capa}
-                                    url={`/espacos-para-eventos/${eventSpace.id}`}
-                                    categories={eventSpace.categorias}
-                                    path="espacos-para-eventos"
-                                />
-                            ))}
+                    {Array.isArray(eventSpaces) && eventSpaces.length > 0 ? (
+                        <div className="align-self-stretch pb-5 mt-3">
+                            <div className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 gy-4">
+                                {eventSpaces.map(eventSpace => (
+                                    <Card
+                                        setCategory={setCategory}
+                                        key={eventSpace.id}
+                                        nome={eventSpace.nome}
+                                        addresses={eventSpace.enderecos}
+                                        image={eventSpace.capa}
+                                        url={`/espacos-para-eventos/${eventSpace.id}`}
+                                        categories={eventSpace.categorias}
+                                        path="espacos-para-eventos"
+                                    />
+                                ))}
+                            </div>
                         </div>
-                    </div>
+                    ) : (
+                        <h1 className="text-center">
+                            Desculpe! Nenhum Resultado encontrado
+                        </h1>
+                    )}
                 </LoadingGate>
             </Container>
             <Footer />

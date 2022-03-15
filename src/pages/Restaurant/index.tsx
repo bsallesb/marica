@@ -18,6 +18,7 @@ import PriceRange from '../../components/PriceRange';
 import SpotSlider from '../../components/Slider';
 import Wrapper from '../../components/Wrapper';
 import { useRestaurants } from '../../hooks/Restaurant';
+import { setTitle } from '../../utils/title';
 
 const Restaurant: React.FC = () => {
     const { isLoading, restaurant, setCategory, getRestaurant } =
@@ -28,6 +29,11 @@ const Restaurant: React.FC = () => {
         getRestaurant(parseInt(id ?? '', 10));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    useEffect(() => {
+        setTitle(`${restaurant?.nome ?? 'Loading...'} | "Restaurante"`);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [restaurant]);
 
     return (
         <Wrapper>

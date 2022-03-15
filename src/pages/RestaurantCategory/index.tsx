@@ -12,6 +12,7 @@ import PageTitle from '../../components/PageTitle';
 import Wrapper from '../../components/Wrapper';
 import LoadingGate from '../../components/LoadingGate';
 import LoadingCards from '../../components/LoadingCards';
+import { setTitle } from '../../utils/title';
 
 export const RestaurantCategory: React.FC = () => {
     const {
@@ -33,6 +34,11 @@ export const RestaurantCategory: React.FC = () => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    useEffect(() => {
+        setTitle(`${category?.label ?? 'Loading...'} | "Categoria"`);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [category]);
 
     const handleSearch = useCallback((searchText: string): void => {
         getRestaurants(searchText);

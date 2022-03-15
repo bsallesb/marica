@@ -13,6 +13,7 @@ import Wrapper from '../../components/Wrapper';
 import LoadingGate from '../../components/LoadingGate';
 import LoadingCards from '../../components/LoadingCards';
 import LoadingPills from '../../components/LoadingPills';
+import { setTitle } from '../../utils/title';
 
 export const Restaurants: React.FC = () => {
     const { isLoading, restaurants, setCategory, categories, getRestaurants } =
@@ -20,6 +21,7 @@ export const Restaurants: React.FC = () => {
 
     useEffect(() => {
         getRestaurants();
+        setTitle('Restaurantes');
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

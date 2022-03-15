@@ -17,6 +17,7 @@ import Pills from '../../components/Pills';
 import SpotSlider from '../../components/Slider';
 import Wrapper from '../../components/Wrapper';
 import { useBusinesses } from '../../hooks/Business';
+import { setTitle } from '../../utils/title';
 
 const Business: React.FC = () => {
     const { isLoading, business, setCategory, getBusiness } = useBusinesses();
@@ -26,6 +27,11 @@ const Business: React.FC = () => {
         getBusiness(parseInt(id ?? '', 10));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    useEffect(() => {
+        setTitle(`${business?.nome ?? 'Loading...'} | "Comércio"`);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [business]);
 
     return (
         <Wrapper>

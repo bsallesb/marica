@@ -19,6 +19,7 @@ import Pills from '../../components/Pills';
 import SpotSlider from '../../components/Slider';
 import Wrapper from '../../components/Wrapper';
 import { useEventSpaces } from '../../hooks/EventSpace';
+import { setTitle } from '../../utils/title';
 
 const EventSpace: React.FC = () => {
     const { isLoading, eventSpace, setCategory, getEventSpace } =
@@ -29,6 +30,11 @@ const EventSpace: React.FC = () => {
         getEventSpace(parseInt(id ?? '', 10));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    useEffect(() => {
+        setTitle(`${eventSpace?.nome ?? 'Loading...'} | "Ponto"`);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [eventSpace]);
 
     return (
         <Wrapper>

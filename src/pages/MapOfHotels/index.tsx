@@ -18,8 +18,8 @@ export const MapOfHotels: React.FC = () => {
             {hotels && (
                 <IframeBigMap
                     items={hotels}
-                    url="/bares-e-restaurantes"
-                    backTo="Bares e Restaurantes"
+                    url="/hoteis-e-pousadas"
+                    backTo="Hotéis e pousadas"
                     setCategory={setCategory}
                 />
             )}
