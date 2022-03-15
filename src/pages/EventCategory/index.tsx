@@ -1,4 +1,5 @@
 import { useCallback, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import Container from '../../components/Container';
 import Footer from '../../components/Footer';
@@ -14,10 +15,24 @@ import LoadingCards from '../../components/LoadingCards';
 import { setTitle } from '../../utils/title';
 
 export const EventCategory: React.FC = () => {
-    const { events, isLoading, category, setCategory, getEvent } = useEvents();
+    const {
+        events,
+        isLoading,
+        categories,
+        category,
+        getEventsByCategory,
+        setCategory,
+        getEvent,
+        getCategories,
+    } = useEvents();
+    const { id } = useParams();
 
     useEffect(() => {
-        setTitle(`${category?.label ?? 'Loading...'} | "Categoria"`);
+        getEventsByCategory(parseInt(id ?? '', 10));
+        if (!categories.length) {
+            getCategories(parseInt(id ?? '', 10));
+        }
+        window.scrollTo(0, 0);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -55,8 +70,8 @@ export const EventCategory: React.FC = () => {
                     waitFor={isLoading === false}
                     meanWile={<LoadingCards show />}
                 >
-                    <div className="align-self-stretch pb-5 mt-3">
-                        <div className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 gy-4">
+                    <div className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 gy-4">
+                        <div className="row row-cols-3 gy-4">
                             {events.map(event => (
                                 <Card
                                     setCategory={setCategory}

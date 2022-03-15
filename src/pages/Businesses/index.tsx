@@ -22,6 +22,7 @@ export const Businesses: React.FC = () => {
     useEffect(() => {
         getBusinesses();
         setTitle('Comércios');
+        window.scrollTo(0, 0);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

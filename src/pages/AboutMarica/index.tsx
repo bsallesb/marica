@@ -19,6 +19,7 @@ export const AboutMarica: React.FC = () => {
     useEffect(() => {
         getAbout();
         setTitle('Sobre a cidade');
+        window.scrollTo(0, 0);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

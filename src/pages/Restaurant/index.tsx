@@ -27,6 +27,7 @@ const Restaurant: React.FC = () => {
 
     useEffect(() => {
         getRestaurant(parseInt(id ?? '', 10));
+        window.scrollTo(0, 0);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

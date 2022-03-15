@@ -22,6 +22,7 @@ export const Hotels: React.FC = () => {
     useEffect(() => {
         getHotels();
         setTitle('Hoteis');
+        window.scrollTo(0, 0);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

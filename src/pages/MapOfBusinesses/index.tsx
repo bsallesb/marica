@@ -9,6 +9,7 @@ export const MapOfBusinesses: React.FC = () => {
 
     useEffect(() => {
         getBusinesses();
+        window.scrollTo(0, 0);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

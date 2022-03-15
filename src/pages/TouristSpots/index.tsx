@@ -21,6 +21,7 @@ export const TouristSpots: React.FC = () => {
     useEffect(() => {
         getSpots();
         setTitle('Pontos Turísticos');
+        window.scrollTo(0, 0);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

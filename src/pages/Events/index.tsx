@@ -22,6 +22,7 @@ export const Events: React.FC = () => {
     useEffect(() => {
         getEvents();
         setTitle('Eventos');
+        window.scrollTo(0, 0);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

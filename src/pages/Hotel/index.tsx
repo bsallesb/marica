@@ -26,6 +26,7 @@ const Hotel: React.FC = () => {
 
     useEffect(() => {
         getHotel(parseInt(id ?? '', 10));
+        window.scrollTo(0, 0);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
