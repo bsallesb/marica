@@ -32,7 +32,7 @@ const Restaurant: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        setTitle(`${restaurant?.nome ?? 'Loading...'} | Restaurantes`);
+        setTitle(`${restaurant?.nome ?? 'Loading...'} | Bares e Restaurantes`);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [restaurant]);
 

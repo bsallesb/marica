@@ -37,7 +37,7 @@ export const RestaurantCategory: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        setTitle(`${category?.label ?? 'Loading...'} | Restaurantes`);
+        setTitle(`${category?.label ?? 'Loading...'} | Bares e Restaurantes`);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [category]);
 
