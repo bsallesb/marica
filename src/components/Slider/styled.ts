@@ -8,6 +8,4 @@ export const Cover = styled.div`
     background-position: center center;
 `;
 
-export const Wrapper = styled.div`
-    overflow: hidden;
-`;
+export const Wrapper = styled.div``;

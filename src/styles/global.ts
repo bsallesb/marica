@@ -110,4 +110,13 @@ export const GlobalStyle = createGlobalStyle`
     .form-control:focus {
         box-shadow: none;
     }
+
+    .slick-next {
+        right: 10px !important;
+    }
+
+    .slick-prev {
+        left: 10px !important;
+        z-index: 3;
+    }
 `;
