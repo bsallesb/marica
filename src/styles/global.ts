@@ -33,6 +33,7 @@ export const GlobalStyle = createGlobalStyle`
     body {
         background: rgb(245, 245, 245);
         -webkit-font-smoothing: antialiased;
+        overflow: auto !important;
     }
 
     body, input, textarea, button {
